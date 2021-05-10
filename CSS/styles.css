@@ -10449,7 +10449,7 @@ body {
       rgba(47, 23, 15, 0.65),
       rgba(47, 23, 15, 0.65)
     ),
-    url("/SRC/oakWood1.jpg");
+    url("../SRC/oakWood1.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -10608,7 +10608,7 @@ p {
   position: relative;
 }
 .intro-text {
-  background-image: url("/SRC/oakWood2.jpg");
+  background-image: url("../SRC/oakWood2.jpg");
   object-fit: cover;
   color: black;
   font-weight: 900;
