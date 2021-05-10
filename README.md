@@ -1,4 +1,4 @@
-# ![Orifurniture](./SRC/logoOrifurniture.png)
+# ![Orifurniture](./SRC/Orifurniture.png)
 
 ## Sommaire
 
