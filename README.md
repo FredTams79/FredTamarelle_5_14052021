@@ -4,9 +4,9 @@
 
 1.[INTRODUCTION](#introduction)  
 2.[INSTALLATION](#installation)  
-3.[ARCHITECTURE GENERALE](#architecture-générale)  
+3.[ARCHITECTURE GENERALE](#architecture-generale)  
 4.[CARACTÉRISTIQUES TECHNIQUES](#caractéristiques-techniques)  
-5.[COMPATIBILITÉ](#comptabilité)  
+5.[COMPATIBILITÉ](#compatibilité)  
 6.[CONTACT](#contact)
 
 ## INTRODUCTION
