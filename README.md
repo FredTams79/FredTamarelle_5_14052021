@@ -11,7 +11,7 @@
 
 ## INTRODUCTION
 
-[Orifurniture](https://fredtams79.github.io/FredTamarelle_5_03052021/) est un site de vente de meubles en chêne :
+[Orifurniture](https://fredtams79.github.io/FredTamarelle_5_14052021/) est un site de vente de meubles en chêne :
 Notre collection de meubles en chêne massif regroupe des tables à manger, des tables basses, des chaises, ...
 Ils sont fabriqués avec du chêne français qui garantissent leur qualité. Ils sont disponibles en plusieurs modèles et conviennent à tous les styles de décoration.
 **Orifurniture** fait parti du groupe **ORINOCO** comme Oribook et Oritextil.
@@ -53,7 +53,7 @@ Le site a été réalisé avec **HTML5**, **CSS3**, **JavaScript** / _BOOTSTRAP_
 ## CONTACT
 
 Vous pouvez joindre l'équipe d'Orifurniture par mail à cette adresse : **contact@orifurniture.com**.
-Ou vous rendre sur le site : [Orinofurniture](https://fredtams79.github.io/FredTamarelle_5_03052021/)
+Ou vous rendre sur le site : [Orinofurniture](https://fredtams79.github.io/FredTamarelle_5_14052021/)
 
 > Ce site a été réalisé dans le cadre du projet 5 de la formation Développeur Web
 > d'[Openclassrooms](https://openclassrooms.com/fr/paths/185-developpeur-web).
