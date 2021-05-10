@@ -53,7 +53,7 @@ Le site a été réalisé avec **HTML5**, **CSS3**, **JavaScript** / _BOOTSTRAP_
 ## CONTACT
 
 Vous pouvez joindre l'équipe d'Orifurniture par mail à cette adresse : **contact@orifurniture.com**.
-Ou vous rendre sur le site : [Orinofurniture](https://fredtams79.github.io/FredTamarelle_5_14052021/)
+Ou vous rendre sur le site : [Orifurniture](https://fredtams79.github.io/FredTamarelle_5_14052021/)
 
 > Ce site a été réalisé dans le cadre du projet 5 de la formation Développeur Web
 > d'[Openclassrooms](https://openclassrooms.com/fr/paths/185-developpeur-web).
