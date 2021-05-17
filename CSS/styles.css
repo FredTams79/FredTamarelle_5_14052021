@@ -2074,6 +2074,13 @@ pre code {
   border: 0;
 }
 
+.fa-shopping-cart {
+  font-size: 1.3rem;
+}
+.fa-cart-arrow-down {
+  font-size: 2rem;
+}
+
 #varnishProduct {
   width: fit-content;
   margin-bottom: 1rem;
