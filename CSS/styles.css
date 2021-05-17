@@ -2074,6 +2074,11 @@ pre code {
   border: 0;
 }
 
+#varnishProduct {
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
 .form-control {
   display: block;
   width: 100%;

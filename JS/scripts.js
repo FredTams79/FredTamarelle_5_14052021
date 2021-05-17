@@ -6,7 +6,7 @@
 ///// Highlights current date on contact page/////
 $(".list-hours li").eq(new Date().getDay()).addClass("today");
 
-///// Récupérer les données des produits par leur _id /////
+///// Récupérer les données API des produits /////
 
 fetch("http://localhost:3000/api/furniture") //récupére la ressource à l'adress url
   .then((response) => response.json())
@@ -33,6 +33,7 @@ fetch("http://localhost:3000/api/furniture") //récupére la ressource à l'adre
         "card-body d-flex flex-column justify-content-between"
       );
       furnitureName.setAttribute("class", "card-title");
+      furnitureName.setAttribute("style", "color:#e6a756;");
       furnitureDescription.setAttribute("class", "card-text");
       furniturePrice.setAttribute("class", "card-price");
       productLink.setAttribute("href", "products.html?id=" + meuble._id);

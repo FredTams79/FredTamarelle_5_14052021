@@ -65,7 +65,12 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-2" id="mainNav">
       <div class="container">
         <a
-          class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none"
+          class="
+            navbar-brand
+            text-uppercase text-expanded
+            font-weight-bold
+            d-lg-none
+          "
           href="index.html"
           ><img
             class="navimg"
@@ -110,27 +115,27 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a
                   class="dropdown-item"
-                  href="products.html?5be9cc611c9d440000c1421e"
+                  href="products.html?id=5be9cc611c9d440000c1421e"
                   >Table croisée</a
                 >
                 <a
                   class="dropdown-item"
-                  href="products.html?5beaadda1c9d440000a57d98"
+                  href="products.html?id=5beaadda1c9d440000a57d98"
                   >Table basse</a
                 >
                 <a
                   class="dropdown-item"
-                  href="products.html?5beaae361c9d440000a57d99"
+                  href="products.html?id=5beaae361c9d440000a57d99"
                   >Table ovale</a
                 >
                 <a
                   class="dropdown-item"
-                  href="products.html?5beaaf2e1c9d440000a57d9a"
+                  href="products.html?id=5beaaf2e1c9d440000a57d9a"
                   >Banc Oak</a
                 >
                 <a
                   class="dropdown-item"
-                  href="products.html?5beab2061c9d440000a57d9b"
+                  href="products.html?id=5beab2061c9d440000a57d9b"
                   >Chaise Vintage</a
                 >
                 <div class="dropdown-divider"></div>
@@ -161,44 +166,24 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
 
     <!-- SECTION PRODUIT -->
     <!-- Page Content -->
-    <div class="container text-white">
+    <div class="container text-white" id="furnitureProductsId">
       <!-- Portfolio Item Heading -->
-      <h1 class="my-4" id="nameProduct">Meuble name</h1>
-
-      <!-- CARDS FURNITURES -->
-      <article
-        id="furnitureProducts"
-        class="row d-flex justify-content-center"
-      ></article>
-      <!-- END CARDS FURNITURES -->
+      <h1 class="my-4" id="nameProduct"></h1>
 
       <!-- Portfolio Item Row -->
       <div class="row">
-        <div class="col-md-8">
-          <img
-            id="imageProduct"
-            class="img-fluid"
-            src="http://localhost:3000/images/oak_1.jpg"
-            alt=""
-          />
-        </div>
+        <div id="imageId" class="col-md-6"></div>
 
-        <div class="col-md-4">
-          <h3 class="my-3">Description</h3>
-          <p id="descriptionProduct">text description du produit</p>
-          <ul>
-            <li id="varnishProduct">choix vernis avec menu déroulant</li>
-            <li id="quantityProduct">quantité avec possibilité +1 -1</li>
-            <li id="priceProduct">prix qui change si qté +1</li>
-          </ul>
+        <div class="col-md-6">
+          <h3 class="my-3"><strong>Description :</strong></h3>
+          <p id="descriptionProduct"></p>
+          <h5><strong>Choix du vernis :</strong></h5>
+          <select id="varnishProduct" class="form-control ml-4 font-weight-bold text-primary"></select>
+          <h5 id="priceProduct"></h5>
+          <p><u>ATTENTION</u> : 1 seul produit par personne à l'achat svp - Merci !</p>
         </div>
-        <div class="intro-button mx-auto">
-          <a
-            id="basketProduct"
-            class="btn btn-primary btn-xl btn-text mt-3"
-            href="panier.html"
-          >
-            Ajouter au panier
+        <div id="basketProduct" class="intro-button mx-auto btn btn-primary btn-xl btn-text mt-3">
+                      Ajouter au panier
           </a>
         </div>
       </div>
@@ -213,7 +198,7 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
             <img
               class="img-fluid"
               src="http://localhost:3000/images/oak_1.jpg"
-              alt=""
+              alt="photo de "
             />
           </a>
         </div>
@@ -302,7 +287,7 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
       crossorigin="anonymous"
     ></script>
     <!-- JS du site -->
-    <script src="JS/scripts.js"></script>
+    <!--<script src="JS/scripts.js"></script>-->
     <script src="JS/products.js"></script>
     <!-- Javascript END -->
   </body>
