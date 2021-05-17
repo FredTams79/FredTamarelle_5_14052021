@@ -43,7 +43,7 @@ fetch("http://localhost:3000/api/furniture") //récupére la ressource à l'adre
       furnitureDescription.innerHTML = meuble.description;
       furniturePrice.innerHTML = "Prix : " + meuble.price / 100 + " €";
       productLink.innerHTML =
-        '<i class="fas fa-dolly fa-2x"></i></br>Voir la page :</br>' +
+        '<i class="fas fa-arrow-circle-down fa-2x"></i></br>Voir la page :</br>' +
         meuble.name;
 
       furnitureProducts.appendChild(furnitureProduct);
