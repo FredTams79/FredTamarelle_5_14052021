@@ -3,7 +3,7 @@
  * Copyright 2013-2021 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-business-casual/blob/master/LICENSE)
  */
-///// Highlights current date on contact page/////
+///// Highlights current date on contact page = Met en évidence la date du jour sur la page de contact/////
 $(".list-hours li").eq(new Date().getDay()).addClass("today");
 
 ///// Récupérer les données API des produits /////
@@ -57,4 +57,4 @@ fetch("http://localhost:3000/api/furniture") //récupére la ressource à l'adre
       console.log(meuble);
     });
   })
-  .catch((error) => console.log(error)); // Une erreur est survenue
+  .catch((error) => console.log("Erreur : " + error)); // Une erreur est survenue

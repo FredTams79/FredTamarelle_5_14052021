@@ -2076,12 +2076,16 @@ pre code {
 
 .fa-shopping-cart {
   font-size: 1.3rem;
+  color: #e6a756;
 }
 .fa-cart-arrow-down {
   font-size: 2rem;
 }
 
 #varnishProduct {
+  width: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   margin-bottom: 1rem;
 }
