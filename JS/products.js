@@ -9,7 +9,6 @@ const product = params.get("id");
 let APIFurnitures = "http://localhost:3000/api/furniture/" + product;
 
 //console.log(APIFurnitures);
-const furnitureVarnish = varnishProduct;
 
 /////Récupération des infos du produit////
 fetch(APIFurnitures)
@@ -42,10 +41,12 @@ fetch(APIFurnitures)
 
     /// test ///
     console.log("nom / image / prix du produit / vernis");
-    console.log(data.name);
-    console.log(data.imageUrl);
-    console.log(data.price / 100);
-    console.log(varnishProduct.value);
+    console.log(
+      data.name,
+      data.imageUrl,
+      data.price / 100,
+      varnishProduct.value
+    );
 
     //// AJOUTER AU PANIER + localStorage////
 
@@ -55,15 +56,9 @@ fetch(APIFurnitures)
         addProduct.preventDefault(); // empêche l'execution par défaut de l'évenement
 
         ////Récupération de la valeur du vernis choisi par l'utilisateur/////
-        let choixVarnish = furnitureVarnish.value;
+        let choixVarnish = varnishProduct.value;
         console.log("choixVarnish");
         console.log(choixVarnish);
-
-        let userAddProduct = [
-          `image: ${data.imageUrl}, nom: ${
-            data.name
-          }, choix Vernis: ${choixVarnish}, prix: ${data.price / 100}`,
-        ];
 
         ///// Message confirmation ajout produit au panier /////
         const confirmationBasket = () => {
@@ -82,22 +77,22 @@ Continuez votre visite sur notre site "ANNULER"`)
         /////Récupération des valeurs JSON pour les mettre dans le panier/////
         const basketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
         console.log("panier");
-        console.log(userAddProduct);
+        console.log(data);
 
         ///// Ajout produit si déjà des produits dans le panier ////
         if (basketContent) {
-          basketContent.push(userAddProduct);
+          basketContent.push(data);
           localStorage.setItem("furniture", JSON.stringify(basketContent)); // convertir objet JavaScript en JSON
           confirmationBasket();
           ///// Ajout nouveau produit dans le panier /////
         } else if (basketContent == false) {
           basketContent = [];
-          basketContent.push(userAddProduct);
+          basketContent.push(data);
           /////Envoie du panier au local storage//////
           localStorage.setItem("furniture", JSON.stringify(basketContent));
           confirmationBasket();
         } else {
-          localStorage.setItem("furniture", JSON.stringify([userAddProduct]));
+          localStorage.setItem("furniture", JSON.stringify([data]));
           confirmationBasket();
         }
       });

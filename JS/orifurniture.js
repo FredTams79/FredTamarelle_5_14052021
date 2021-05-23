@@ -18,6 +18,11 @@ document
   };*/
     //console.log("userAddProduct");
     // console.log(userAddProduct);
+    let userAddProduct = [
+      `image: ${data.imageUrl}, nom: ${
+        data.name
+      }, choix Vernis: ${choixVarnish}, prix: ${data.price / 100}`,
+    ];
 
     ///// Message confirmation ajout produit au panier /////
     const confirmationBasket = () => {
