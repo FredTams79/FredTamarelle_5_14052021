@@ -10,6 +10,15 @@ let APIFurnitures = "http://localhost:3000/api/furniture/" + product;
 
 //console.log(APIFurnitures);
 
+if (localStorage.getItem("furniture")) {
+  console.log("panier ok");
+} else {
+  console.log("création du panier");
+  let init = [];
+  localStorage.setItem("furniture", JSON.stringify(init));
+}
+let basketContent = JSON.parse(localStorage.getItem("furniture"));
+
 /////Récupération des infos du produit////
 fetch(APIFurnitures)
   .then((response) => response.json())
@@ -47,18 +56,18 @@ fetch(APIFurnitures)
       data.price / 100,
       varnishProduct.value
     );
-
     //// AJOUTER AU PANIER + localStorage////
 
     document
       .getElementById("basketProduct")
       .addEventListener("click", (addProduct) => {
         addProduct.preventDefault(); // empêche l'execution par défaut de l'évenement
+        basketContent.push(data);
+        localStorage.setItem("furniture", JSON.stringify(basketContent));
 
         ////Récupération de la valeur du vernis choisi par l'utilisateur/////
         let choixVarnish = varnishProduct.value;
-        console.log("choixVarnish");
-        console.log(choixVarnish);
+        console.log("choixVarnish : " + choixVarnish);
 
         ///// Message confirmation ajout produit au panier /////
         const confirmationBasket = () => {
@@ -75,12 +84,12 @@ Continuez votre visite sur notre site "ANNULER"`)
 
         ////******* le local storage *********/////
         /////Récupération des valeurs JSON pour les mettre dans le panier/////
-        const basketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
+        //const basketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
         console.log("panier");
-        console.log(data);
-
+        console.log(data, choixVarnish);
+        ///******* manque le choix du vernis ********/////
         ///// Ajout produit si déjà des produits dans le panier ////
-        if (basketContent) {
+        /* if (basketContent) {
           basketContent.push(data);
           localStorage.setItem("furniture", JSON.stringify(basketContent)); // convertir objet JavaScript en JSON
           confirmationBasket();
@@ -94,7 +103,7 @@ Continuez votre visite sur notre site "ANNULER"`)
         } else {
           localStorage.setItem("furniture", JSON.stringify([data]));
           confirmationBasket();
-        }
+        }*/
       });
   })
 

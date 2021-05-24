@@ -2,22 +2,42 @@
 //alert("page en cours de travaux");
 
 const userBasketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
-console.log("localStoragePanier");
-console.log(userBasketContent);
+console.log("Panier :");
 
 // Affichage produit acheté du panier
-const basketProductContent = document.querySelector("#basketProductContent");
+
 //console.log(basketProductContent);
-const displayBasketContent = [];
 //si le panier est vide
 if (userBasketContent === null) {
   const basketNull = `
   <div class="table-responsive-sm bg-white my-5 mx-5 py-3 text-center text-primary text-uppercase font-weight-bold"><div>Votre panier est vide</div></div>`;
   basketProductContent.innerHTML = basketNull;
 } else {
-  // affichage des données localStorage
-  // boucle pour ajout produit ligne par ligne
-  for (i = 0; i < userBasketContent.length; i++) {
+  const basketProductContent = document.querySelector("#basketProductContent");
+  console.log(userBasketContent);
+  userBasketContent.forEach((panier, index) => {
+    basketProductContent.innerHTML =
+      panier.name + " : " + panier.price / 100 + " €";
+    console.log(panier);
+  });
+}
+// affichage des données localStorage
+
+// boucle pour ajout produit ligne par ligne
+
+//for (i = 0; i < userBasketContent.length; i++) {
+//basketProductContent.innerHTML = userBasketContent[i].name;
+
+/*  console.log("nombre de produit : " + userBasketContent.length);
+    const displayBasketContent = [];
+    console.log("affichage contenu panier :");
+    console.log(displayBasketContent);
+    // Ligne prix total
+    let totalPrice = 0;
+    totalPrice = totalPrice + parseInt(userBasketContent.price / 100, 10);
+    console.log("prix : " + totalPrice);
+    ////// problème pour ajouter les valeurs du produit dans le tableau /////////
+    // + problème avec option vernis
     displayBasketContent =
       displayBasketContent +
       `
@@ -34,11 +54,11 @@ if (userBasketContent === null) {
     </thead>
     <tbody>
     <tr>
-      <th scope="row">${userBasketContent.length[i]}</th>
-      <td>${userBasketContent.length[i].data.imageUrl}</td>
-      <td>${userBasketContent.length[i].data.name}</td>
-      <td>${userBasketContent.length[i].choixVarnish}</td>
-      <td>${userBasketContent.length[i].data.price / 100} €</td>
+      <th scope="row">${userBasketContent[i]}</th>
+      <td>${userBasketContent[i].imageUrl}</td>
+      <td>${userBasketContent[i].name}</td>
+      <td>${userBasketContent[i].choixVarnish}</td> 
+      <td>${userBasketContent[i].price / 100} €</td>
       <td><i class="fas fa-trash-alt"></i></td>
     </tr>
     <tr class="text-secondary font-weight-bold">
@@ -56,7 +76,7 @@ if (userBasketContent === null) {
 
     basketProductContent.innerHTML = displayBasketContent;
   }
-}
+}*/
 
 /*
 // faire un tableau pour mettre les produits ajoutés au click
