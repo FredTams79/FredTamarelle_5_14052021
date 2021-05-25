@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
 
-    <title>Orifurniture | Vente de meubles en chêne du groupe Orinoco</title>
+    <title>Confirmation de commande client | Orifurniture</title>
     <meta
       name="description"
       content="Orifurniture est un site de vente de meubles en chêne :
@@ -13,7 +13,7 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
     />
     <meta
       name="keywords"
-      content="Orinoco, Oribook, Oritextil, Orifurniture, commerce en ligne, site e-commerce, produits, produit, meuble, meuble en chêne"
+      content="Orinoco, Oribook, Oritextil, Orifurniture, commerce en ligne, site e-commerce, produits, produit, meuble, meuble en chêne, commande, confirmation de commande"
     />
     <meta
       name="viewport"
@@ -51,7 +51,7 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
     <!-- Page principal a indexer et prévenir des duplications -->
     <link
       rel="canonical"
-      href="https://fredtams79.github.io/FredTamarelle_5_14052021/index.html"
+      href="https://fredtams79.github.io/FredTamarelle_5_03052021/index.html"
     />
   </head>
   <body>
@@ -144,6 +144,7 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
                 >
               </div>
             </li>
+
             <li class="nav-item px-lg-4">
               <a
                 class="nav-link text-uppercase text-expanded"
@@ -165,44 +166,54 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
     <!-- NAVIGATION END -->
     <!-- HEADER END -->
 
-    <!-- SECTION DESCRIPTION -->
-    <section class="page-section clearfix">
-      <div class="container">
-        <div class="intro">
-          <div class="intro-img img-fluid mb-3 mb-lg-0 rounded"></div>
-          <div class="intro-text left-0 text-center bg-faded p-3 rounded">
-            <p class="section-heading mb-1">
-              Orifurniture est un site de vente de meubles en chêne. Notre
-              collection de meubles en chêne massif regroupe des tables à
-              manger, des tables basses, des chaises, ... Ils sont fabriqués
-              avec du chêne français qui garantissent leur qualité. Ils sont
-              disponibles en plusieurs modèles ainsi que vernis et conviennent à
-              tous les styles de décoration.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- SECTION DESCRIPTION END -->
-
     <!-- SECTION PRODUIT -->
-    <section id="products" class="page-section cta">
-      <!-- Page Content -->
-      <div class="container">
-        <!-- Page Heading -->
-        <h1 class="mb-4 text-center">
-          Sélectionnez le meuble de votre choix :
-        </h1>
-        <!-- CARDS FURNITURES -->
-        <article
-          id="furnitureProducts"
-          class="row d-flex justify-content-center"
-        ></article>
-        <!-- END CARDS FURNITURES -->
-      </div>
-      <!-- /.container -->
-    </section>
-    <!-- SECTION PRODUITS END-->
+    <h1 class="mx-3 my-5 text-center text-primary font-weight-bold">
+      VOTRE CONFIRMATION DE COMMANDE
+    </h1>
+
+    <!-- Badge CONFIRMATION -->
+    <div class="container">
+      <ul class="list-group mb-5">
+        <li
+          class="
+            list-group-item
+            h3
+            mb-0
+            text-center
+            d-flex
+            justify-content-between
+            align-items-center
+          "
+        >
+          Merci pour votre achat !<br />
+          Votre commande n°xxx-xxx-xxx d'un montant total de : XXX € a bien été
+          prise en compte, vous recevrez un e-mail de confirmation ainsi que le
+          délais de livraison.
+          <span class="badge badge-primary badge-pill ml-3"
+            ><i class="fas fa-dolly-flatbed fa-2x"></i
+          ></span>
+        </li>
+
+        <li
+          class="
+            list-group-item
+            d-flex
+            justify-content-between
+            align-items-center
+          "
+        >
+          <button
+            id="returnAcceuil"
+            class="intro-button mx-auto btn btn-primary btn-xl btn-text h-25"
+            type="submit"
+            value="Valider"
+          >
+            <i class="fas fa-home"></i>&nbsp;&nbsp;Revenir à la page d'accueil !
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!-- /.Badge -->
 
     <!-- FOOTER -->
     <footer class="footer text-faded text-center py-2">
@@ -242,20 +253,9 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
       integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
       crossorigin="anonymous"
     ></script>
-    <!-- CDN Popper-1.16.1 and Bootstrap-4.6.0 
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
-      crossorigin="anonymous"
-    ></script>
-    -->
     <!-- JS du site -->
-    <script src="JS/scripts.js"></script>
+    <script src="JS/confirmation.js"></script>
+
     <!-- Javascript END -->
   </body>
 </html>

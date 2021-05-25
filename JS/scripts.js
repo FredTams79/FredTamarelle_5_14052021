@@ -6,7 +6,7 @@
 ///// Highlights current date on contact page = Met en évidence la date du jour sur la page de contact/////
 $(".list-hours li").eq(new Date().getDay()).addClass("today");
 
-///// Récupérer les données API des produits /////
+/////****** Récupérer les données API des produits ******/////
 
 fetch("http://localhost:3000/api/furniture") //récupére la ressource à l'adress url
   .then((response) => response.json())

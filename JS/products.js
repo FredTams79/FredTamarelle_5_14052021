@@ -1,14 +1,10 @@
-/////RECUPERATION DES DONNEES API PAR MEUBLE/////
+/////******* RECUPERATION DES DONNEES API PAR MEUBLE *******/////
 
-/////Récupération de l'ID envoyé dans URL/////
+///Récupération de l'ID envoyé dans URL///
 const params = new URLSearchParams(document.location.search);
 const product = params.get("id");
 
-//console.log(product);
-
 let APIFurnitures = "http://localhost:3000/api/furniture/" + product;
-
-//console.log(APIFurnitures);
 
 if (localStorage.getItem("furniture")) {
   console.log("panier ok");
@@ -56,7 +52,8 @@ fetch(APIFurnitures)
       data.price / 100,
       varnishProduct.value
     );
-    //// AJOUTER AU PANIER + localStorage////
+
+    ////****** AJOUTER AU PANIER + localStorage ******////
 
     document
       .getElementById("basketProduct")
@@ -68,6 +65,8 @@ fetch(APIFurnitures)
         ////Récupération de la valeur du vernis choisi par l'utilisateur/////
         let choixVarnish = varnishProduct.value;
         console.log("choixVarnish : " + choixVarnish);
+        console.log("panier");
+        console.log(data, choixVarnish);
 
         ///// Message confirmation ajout produit au panier /////
         const confirmationBasket = () => {
@@ -81,15 +80,18 @@ Continuez votre visite sur notre site "ANNULER"`)
             window.location.href = "index.html";
           }
         };
+        confirmationBasket();
+      });
+  })
 
-        ////******* le local storage *********/////
-        /////Récupération des valeurs JSON pour les mettre dans le panier/////
-        //const basketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
-        console.log("panier");
-        console.log(data, choixVarnish);
-        ///******* manque le choix du vernis ********/////
-        ///// Ajout produit si déjà des produits dans le panier ////
-        /* if (basketContent) {
+  .catch((error) => console.log("Erreur : " + error)); // Une erreur est survenue
+
+////******* le local storage *********/////
+/////Récupération des valeurs JSON pour les mettre dans le panier/////
+//const basketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
+///******* manque le choix du vernis ********/////
+///// Ajout produit si déjà des produits dans le panier ////
+/* if (basketContent) {
           basketContent.push(data);
           localStorage.setItem("furniture", JSON.stringify(basketContent)); // convertir objet JavaScript en JSON
           confirmationBasket();
@@ -104,7 +106,3 @@ Continuez votre visite sur notre site "ANNULER"`)
           localStorage.setItem("furniture", JSON.stringify([data]));
           confirmationBasket();
         }*/
-      });
-  })
-
-  .catch((error) => console.log("Erreur : " + error)); // Une erreur est survenue

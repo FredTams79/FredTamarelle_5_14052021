@@ -29,7 +29,9 @@ if (userBasketContent === null) {
   });
 }
 
-//////////formulaire//////
+//////////***** FORMULAIRE ******//////
+//addEventListener
+
 const postData = {
   contact: {},
   products: ["5be9cc611c9d440000c1421e"],
