@@ -3,9 +3,13 @@
 
 const userBasketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
 console.log("Panier :");
+console.log(userBasketContent);
 
 // Affichage produit acheté du panier
-
+// Ligne prix total
+let totalPrice = 0;
+totalPrice = totalPrice + parseInt(userBasketContent.price / 100, 10);
+console.log("prix : " + totalPrice);
 //console.log(basketProductContent);
 //si le panier est vide
 if (userBasketContent === null) {
@@ -14,13 +18,48 @@ if (userBasketContent === null) {
   basketProductContent.innerHTML = basketNull;
 } else {
   const basketProductContent = document.querySelector("#basketProductContent");
-  console.log(userBasketContent);
   userBasketContent.forEach((panier, index) => {
-    basketProductContent.innerHTML =
-      panier.name + " : " + panier.price / 100 + " €";
+    basketProductContent.innerHTML = `
+      <tr><td><img src="${
+        panier.imageUrl
+      }" class="img-thumbnail w-25 mr-3"></img>${panier.name}</td>
+      <td scope="col" class="w-25">${panier.price / 100} €</td>
+      <td><button><i class="fas fa-trash-alt"></i></button></td></tr>`;
     console.log(panier);
   });
 }
+
+//////////formulaire//////
+const postData = {
+  contact: {},
+  products: ["5be9cc611c9d440000c1421e"],
+};
+
+postData.contact = {
+  firstName: "John",
+  lastName: "Doe",
+  address: "inconnu au bataillon",
+  city: "Paris",
+  email: "johndoe@monmail.com",
+};
+
+//fetch avec POST
+
+/*!
+ *fetch("http://localhost:3000/api/furniture", {
+ * method: "POST", // envoyer les données
+ *headers: {
+ * // donnent un peu plus d’information sur notre requête
+ *Accept: "application/json", //  avec la valeur application/json
+ *"Content-Type": "application/json", // avec la valeur  application/json
+ *},
+ *body: JSON.stringify("http://localhost:3000/api/furniture" + "_id"), //  les données qu’on souhaite envoyer  (dynamique)
+ *})
+ *  .then((response) => response.json())
+ *  .then((response) => console.log(response))
+ *  .catch((error) => console.log(error));
+ */
+
 // affichage des données localStorage
 
 // boucle pour ajout produit ligne par ligne
@@ -41,18 +80,7 @@ if (userBasketContent === null) {
     displayBasketContent =
       displayBasketContent +
       `
-  <div class="table-responsive-sm bg-white my-5 mx-5 text-center">
-  <table class="table">
-    <thead>
-    <tr class="text-primary font-weight-bold text-uppercase">
-      <th scope="col"><i class="fas fa-shopping-basket"></i></th>
-      <th scope="col" colspan="2">Produit(s)</th>
-      <th scope="col">Vernis</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Supprimer</th>
-    </tr>
-    </thead>
-    <tbody>
+  
     <tr>
       <th scope="row">${userBasketContent[i]}</th>
       <td>${userBasketContent[i].imageUrl}</td>

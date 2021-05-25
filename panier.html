@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>Panier avec les meubles en chêne du groupe Orinoco | Orifurniture</title>
+    <title>
+      Panier avec les meubles en chêne du groupe Orinoco | Orifurniture
+    </title>
     <meta
       name="description"
       content="Orifurniture est un site de vente de meubles en chêne :
@@ -146,9 +148,11 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
             </li>
 
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="panier.html"
-                ><i class="fas fa-shopping-cart"></i></a
-              >
+              <a
+                class="nav-link text-uppercase text-expanded"
+                href="panier.html"
+                ><i class="fas fa-shopping-cart"></i
+              ></a>
             </li>
             <li class="nav-item px-lg-4">
               <a
@@ -165,12 +169,189 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
     <!-- HEADER END -->
 
     <!-- SECTION PRODUIT -->
+    <h1 class="mx-3 my-5 text-center text-primary font-weight-bold">
+      VOTRE COMMANDE
+    </h1>
+
     <!-- Page Content Panier-->
-    <div id="basketProductContent" class="mx-3 my-5 text-center text-white font-weight-bold">
-
-</div>
+    <h2 class="mx-3 my-5 text-center text-white font-weight-bold">
+      VOTRE PANIER
+    </h2>
+    <div class="table-responsive-sm bg-white my-5 mx-5 text-center">
+      <table class="table">
+        <thead>
+          <tr class="text-primary font-weight-bold text-uppercase">
+            <th scope="col">
+              <i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Produit(s)
+            </th>
+            <th scope="col" class="w-25">Prix</th>
+            <th scope="col">Supprimer</th>
+          </tr>
+        </thead>
+        <tbody
+          id="basketProductContent"
+          class="mx-3 my-5 text-center text-secondary font-weight-bold"
+        ></tbody>
+      </table>
+      </div>
+      <!-- Badge Panier 
+      <div class="container">
+        <ul class="list-group">
+          <li
+            class="
+              list-group-item
+              d-flex
+              justify-content-between
+              align-items-center
+            "
+          >
+            A list item
+            <span class="badge badge-primary badge-pill">14</span>
+          </li>
+          <li
+            class="
+              list-group-item
+              d-flex
+              justify-content-between
+              align-items-center
+            "
+          >
+            A second list item
+            <span class="badge badge-primary badge-pill">2</span>
+          </li>
+          <li
+            class="
+              list-group-item
+              d-flex
+              justify-content-between
+              align-items-center
+            "
+          >
+            A third list item
+            <span class="badge badge-primary badge-pill">1</span>
+          </li>
+        </ul>
+      </div>-->
       <!-- /.Panier -->
-
+      <!-- FORMULAIRE -->
+      <div
+        id="formulaire"
+        class="mx-3 my-5 text-center text-white font-weight-bold"
+      >
+        <h2 class="font-weight-bold">FORMULAIRE</h2>
+        <p class="text-primary">
+          &Agrave; remplir avant de passer votre commande svp !
+        </p>
+        <form>
+          <div class="form-row justify-content-center">
+            <div class="col-md-4 mb-3">
+              <label for="firstName">Prénom :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="votre prénom"
+                name="firstName"
+                required
+              />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="lastName">Nom :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                placeholder="votre nom"
+                name="lastName"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="email">E-mail :</label>
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="exemple@email.com"
+                  aria-describedby="inputGroupPrepend3"
+                  name="email"
+                  required
+                />
+                <div
+                  class="
+                    alert alert-danger
+                    text-center
+                    w-100
+                    py-2
+                    my-2
+                    d-none
+                    fade
+                    show
+                  "
+                  role="alert"
+                  id="alert-email"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row justify-content-center">
+            <div class="col-md-6 mb-3">
+              <label for="address">Adresse :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                placeholder="Adresse valide"
+                name="address"
+                required
+              />
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="city">Ville :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="city"
+                placeholder="votre Ville"
+                name="city"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="invalidCheck3"
+                name="invalidCheck3"
+                required
+              />
+              <label class="form-check-label text-primary" for="invalidCheck3">
+                Accepter les termes et conditions svp.
+              </label>
+            </div>
+          </div>
+          <button
+            id="confirmFormulaire"
+            class="
+              intro-button
+              mx-auto
+              btn btn-primary btn-xl btn-text
+              mt-3
+              text-uppercase
+              justify-content-center
+            "
+            type="submit"
+            value="Valider"
+          >
+            <i class="fas fa-truck"></i>&nbsp;&nbsp;Passez votre commande !
+          </button>
+        </form>
+      </div>
+      <!-- END FORMULAIRE -->
       <!-- Related Projects Row -->
       <h3 class="mx-5 my-4 text-white">Nos autres meubles</h3>
 
@@ -269,7 +450,9 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
       crossorigin="anonymous"
     ></script>
     <!-- JS du site -->
-        <script src="JS/panier.js"></script>
+    <script src="JS/panier.js"></script>
+    <script src="JS/orifurniture.js"></script>
+
     <!-- Javascript END -->
   </body>
 </html>
