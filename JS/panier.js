@@ -4,53 +4,22 @@
 const userBasketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
 console.log("Panier :");
 console.log(userBasketContent);
-console.log(
+/*console.log(
   "prix produit 1 ou [0] : " + userBasketContent[0].price / 100 + " €"
-);
-
-////******* Calcul prix total panier  ******/////
-
-let priceAdditionnal = [];
-/*
-userBasketContent.price.forEach((item) => {
-  prix.push(item);
-});
-*/
-// récupérer prix de chaque produit
-for (p = 0; p < userBasketContent.length; p++) {
-  priceAdditionnal.push(userBasketContent[p].price / 100);
-}
-console.log("prix de tout les produits a additionner : " + priceAdditionnal);
-
-// additionner les prix avec la méthode .reduce
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
-const totalPrice = priceAdditionnal.reduce(reducer, 0);
-
-// Affichage produit acheté du panier dans HTML
-let affichageTotalPrice = document.querySelector("#totalPrice");
-affichageTotalPrice.innerText = totalPrice + " €";
-
-console.log("prix total : " + affichageTotalPrice.innerText);
-console.log("prix total afficher tableau panier = " + totalPrice + " €");
-
-/*
-let total = 0;
-let affichageTotalPrice = document.querySelector("#totalPrice");
-affichageTotalPrice.innerText = totalPrice + " €";
-total = parseInt(priceAdditionnal / 100, 10);
-*/
+);*/
 
 //////********* ??? gérer gestion même produit commandé ??? *******///////
 
 /////******* Affichage Panier vide quand zéro produit commandé ******/////
+const basketProductContent = document.querySelector("#basketProductContent");
+const basketNull = document.querySelector("#basketNull");
 
 //si le panier est vide
 if (userBasketContent === null) {
-  const basketNull = `
-  <div class="table-responsive-sm bg-white my-5 mx-5 py-3 text-center text-primary text-uppercase font-weight-bold"><div>Votre panier est vide</div></div>`;
-  basketProductContent.innerHTML = basketNull;
+  console.log("je suis vide");
+  basketNull.innerHTML = `
+  <div class="h2 my-5 mx-5 py-3 text-center text-primary text-uppercase font-weight-bold"><div>Votre panier est vide</div></div>`;
 } else {
-  const basketProductContent = document.querySelector("#basketProductContent");
   userBasketContent.forEach((panier, index) => {
     basketProductContent.innerHTML = `
       <tr><td><img src="${
@@ -59,6 +28,40 @@ if (userBasketContent === null) {
       <td scope="col" class="w-25">${panier.price / 100} €</td>
       <td><button id="btnSupprimer"><i class="fas fa-trash-alt"></i></button></td></tr>`;
     console.log(panier);
+
+    ////******* Calcul prix total panier  ******/////
+
+    let priceAdditionnal = [];
+    /*
+userBasketContent.price.forEach((item) => {
+  prix.push(item);
+});
+*/
+    // récupérer prix de chaque produit
+    for (p = 0; p < userBasketContent.length; p++) {
+      priceAdditionnal.push(userBasketContent[p].price / 100);
+    }
+    console.log(
+      "prix de tout les produits a additionner : " + priceAdditionnal
+    );
+
+    // additionner les prix avec la méthode .reduce
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const totalPrice = priceAdditionnal.reduce(reducer, 0);
+
+    // Affichage produit acheté du panier dans HTML
+    let affichageTotalPrice = document.querySelector("#totalPrice");
+    affichageTotalPrice.innerText = totalPrice + " €";
+
+    console.log("prix total : " + affichageTotalPrice.innerText);
+    console.log("prix total afficher tableau panier = " + totalPrice + " €");
+
+    /*
+let total = 0;
+let affichageTotalPrice = document.querySelector("#totalPrice");
+affichageTotalPrice.innerText = totalPrice + " €";
+total = parseInt(priceAdditionnal / 100, 10);
+*/
   });
 }
 
