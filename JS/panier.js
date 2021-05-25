@@ -21,13 +21,32 @@ if (userBasketContent === null) {
   <div class="h2 my-5 mx-5 py-3 text-center text-primary text-uppercase font-weight-bold"><div>Votre panier est vide</div></div>`;
 } else {
   userBasketContent.forEach((panier, index) => {
-    basketProductContent.innerHTML = `
-      <tr><td><img src="${
-        panier.imageUrl
-      }" class="img-thumbnail w-25 mr-3"></img>${panier.name}</td>
+    let productLine = document.createElement("tr");
+
+    productLine.innerHTML = `
+      <td><img src="${panier.imageUrl}" class="img-thumbnail w-25 mr-3"></img>${
+      panier.name
+    }</td>
       <td scope="col" class="w-25">${panier.price / 100} €</td>
-      <td><button id="btnSupprimer"><i class="fas fa-trash-alt"></i></button></td></tr>`;
+      <td><button id="btnSupprimer"><i class="fas fa-trash-alt"></i></button></td>`;
+    basketProductContent.appendChild(productLine);
+
     console.log(panier);
+
+    /*const cartContentDetail = document.getElementById("cart-body");
+//afficher les éléments du localStorage dans le panier
+if (localStorage.cartItems) {
+    //On récupère le contenu du panier
+    const cartItems = JSON.parse(localStorage.cartItems);
+    //et pour chaque objet, on affiche une ligne dans le panier
+    cartItems.forEach(cartItem => {
+        total = total + parseInt(cartItem.price);
+        //création des éléments du panier
+        let productDetail = document.createElement('tr');
+        productDetail.classList.add('cart-inner');
+        productDetail.innerHTML = '<td class="pic-title col-12 col-sm-auto"><div class="d-flex w-100 align-items-center"><img src="' + cartItem.url + '" class="img-sm mr-3"> <span class="info"> <a href="product.html?id=' + cartItem.id + '" class="title text-dark" data-abc="true">' + cartItem.name + '</a> <p class="text-muted small">' + cartItem.color + ' </span> </div></td><td class="qte"> <p class="pl-4 text-bold h5 ">' + cartItem.quantity + '</p></td><td class="prices"><div class="price-wrap"><p class="price mb-0">' + cartItem.price + ' €</p> <small class="text-muted"> ' + cartItem.price / cartItem.quantity + ' € l\'unité </small> </div></td><td class="text-right delete d-flex"> </a> <button id="delete-' + i + '" value="' + i + '" class="btn btn-warning"><span class="fa fa-trash" aria-hidden="true"></span> </button></td>';
+        cartContentDetail.appendChild(productDetail);
+        shippingContent.products.push(cartItem.id);*/
 
     ////******* Calcul prix total panier  ******/////
 
