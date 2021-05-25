@@ -4,13 +4,46 @@
 const userBasketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
 console.log("Panier :");
 console.log(userBasketContent);
+console.log(
+  "prix produit 1 ou [0] : " + userBasketContent[0].price / 100 + " €"
+);
 
-// Affichage produit acheté du panier
-// Ligne prix total
-let totalPrice = 0;
-totalPrice = totalPrice + parseInt(userBasketContent.price / 100, 10);
-console.log("prix : " + totalPrice);
-//console.log(basketProductContent);
+////******* Calcul prix total panier  ******/////
+
+let priceAdditionnal = [];
+/*
+userBasketContent.price.forEach((item) => {
+  prix.push(item);
+});
+*/
+// récupérer prix de chaque produit
+for (p = 0; p < userBasketContent.length; p++) {
+  priceAdditionnal.push(userBasketContent[p].price / 100);
+}
+console.log("prix de tout les produits a additionner : " + priceAdditionnal);
+
+// additionner les prix avec la méthode .reduce
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+const totalPrice = priceAdditionnal.reduce(reducer, 0);
+
+// Affichage produit acheté du panier dans HTML
+let affichageTotalPrice = document.querySelector("#totalPrice");
+affichageTotalPrice.innerText = totalPrice + " €";
+
+console.log("prix total : " + affichageTotalPrice.innerText);
+console.log("prix total afficher tableau panier = " + totalPrice + " €");
+
+/*
+let total = 0;
+let affichageTotalPrice = document.querySelector("#totalPrice");
+affichageTotalPrice.innerText = totalPrice + " €";
+total = parseInt(priceAdditionnal / 100, 10);
+*/
+
+//////********* ??? gérer gestion même produit commandé ??? *******///////
+
+/////******* Affichage Panier vide quand zéro produit commandé ******/////
+
 //si le panier est vide
 if (userBasketContent === null) {
   const basketNull = `
@@ -24,45 +57,68 @@ if (userBasketContent === null) {
         panier.imageUrl
       }" class="img-thumbnail w-25 mr-3"></img>${panier.name}</td>
       <td scope="col" class="w-25">${panier.price / 100} €</td>
-      <td><button><i class="fas fa-trash-alt"></i></button></td></tr>`;
+      <td><button id="btnSupprimer"><i class="fas fa-trash-alt"></i></button></td></tr>`;
     console.log(panier);
   });
 }
 
 //////////***** FORMULAIRE ******//////
-//addEventListener
 
-const postData = {
-  contact: {},
-  products: ["5be9cc611c9d440000c1421e"],
-};
+document
+  .getElementById("confirmFormulaire")
+  .addEventListener("submit", (confirmFormulaire) => {
+    confirmFormulaire.preventDefault();
 
-postData.contact = {
-  firstName: "John",
-  lastName: "Doe",
-  address: "inconnu au bataillon",
-  city: "Paris",
-  email: "johndoe@monmail.com",
-};
+    const postData = {
+      contact: {},
+      products: ["5be9cc611c9d440000c1421e"],
+    };
 
-//fetch avec POST
+    postData.contact = {
+      firstName: "John",
+      lastName: "Doe",
+      address: "inconnu au bataillon",
+      city: "Paris",
+      email: "johndoe@monmail.com",
+    };
+    console.log("confirmation formulaire :");
+    console.log(confirmFormulaire);
 
-/*!
- *fetch("http://localhost:3000/api/furniture", {
- * method: "POST", // envoyer les données
- *headers: {
- * // donnent un peu plus d’information sur notre requête
- *Accept: "application/json", //  avec la valeur application/json
- *"Content-Type": "application/json", // avec la valeur  application/json
- *},
- *body: JSON.stringify("http://localhost:3000/api/furniture" + "_id"), //  les données qu’on souhaite envoyer  (dynamique)
- *})
- *  .then((response) => response.json())
- *  .then((response) => console.log(response))
- *  .catch((error) => console.log(error));
- */
+    // Message confirmation commande
+    const confirmationFormulaire = () => {
+      if (
+        window.confirm(`Votre commande a bien été enregistrée
+Pour consulter la confirmation appuyer sur "OK"`)
+      ) {
+        window.location.href = "confirmation.html";
+      }
+    };
 
-// affichage des données localStorage
+    confirmationFormulaire();
+    console.log("confirmation bouton formulaire :");
+    console.log(confirmationFormulaire);
+  });
+
+//Envoie des données avec la requête POST
+function confirmFormulaire(e) {
+  e.preventDefault();
+  fetch("http://localhost:3000/api/furniture/order", {
+    method: "POST", // envoyer les données
+    headers: {
+      // donnent un peu plus d’information sur notre requête
+      Accept: "application/json", //  avec la valeur application/json
+      "Content-Type": "application/json", // avec la valeur  application/json
+    },
+    body: JSON.stringify(postData), //  les données qu’on souhaite envoyer  (en  dynamique)
+  }).then((response) => response.json());
+  console.log("response : " + response);
+}
+
+////********* Lignes ecrites pour aide ou info à vérifier et à supprimer ********//////
+
+//.then((value) => { document.getElementById("").innerText = value.postData.text;
+
+// document.getElementById("form").addEventListener("submit", confirmFormulaire);
 
 // boucle pour ajout produit ligne par ligne
 
@@ -139,4 +195,24 @@ function addToBasket(???) {
 
 contentBasket.push(?product?);
 localStorage.setItem("key", JSON.stringify(contentBasket));
+*/
+
+//////******** gestion du bouton supprimer    *********//////
+/*
+        //Mise en place de la suppression de l'élément relatif au bouton "supprimé" cliqué
+        ({
+          let d = 0;
+         //remarque : '<button id="btnSupprimer-' + d + '" value="' + d + '" class="btn btn-warning"><i class="fa fa-trash" aria-hidden="true"></i> </button>';
+        
+        let btnSupprimer = document.getElementById('btnSupprimer-' + d);
+        btnSupprimer.onclick = function () {
+            userBasketContent.splice(btnSupprimer.value, 1);
+            localStorage.setItem("userBasketContent", JSON.stringify(userBasketContent));
+            document.location.reload(true);
+        if (userBasketContent.length === 0) {
+                localStorage.removeItem("userBasketContent");
+            }
+          };
+          d++;
+        })
 */

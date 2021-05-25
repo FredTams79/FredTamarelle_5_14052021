@@ -58,7 +58,7 @@ fetch(APIFurnitures)
     document
       .getElementById("basketProduct")
       .addEventListener("click", (addProduct) => {
-        addProduct.preventDefault(); // empêche l'execution par défaut de l'évenement
+        addProduct.preventDefault(); // empêche l'execution par défaut de l'évenement et de recharger la page au cas où
         basketContent.push(data);
         localStorage.setItem("furniture", JSON.stringify(basketContent));
 

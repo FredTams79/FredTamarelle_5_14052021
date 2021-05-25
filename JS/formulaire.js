@@ -1,29 +1,4 @@
 //// FORMULAIRE /////
-(function () {
-  "use strict";
-  window.addEventListener(
-    "load",
-    function () {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName("needs-validation");
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener(
-          "submit",
-          function (event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add("was-validated");
-          },
-          false
-        );
-      });
-    },
-    false
-  );
-})();
 
 ////vérif adresse e-mail + RegExp = crée un objet expression rationnelle pour la reconnaissance d'un modèle dans un texte.
 let valueEmail = document.getElementById("email");
@@ -40,7 +15,7 @@ function validEmail(eMail) {
   console.log("test mail : " + eMail);
 }
 
-form.addEventListener("input", function () {
+form.addEventListener("input", () => {
   //On vérifie l'adresse  et on affiche un message d'erreur si non valide
   if (validEmail(valueEmail.value) === false) {
     alertEmail.classList.remove("d-none");
@@ -53,3 +28,22 @@ form.addEventListener("input", function () {
 });
 
 ////
+const postData = {
+  contact: {},
+  products: ["5be9cc611c9d440000c1421e"],
+};
+
+//On récupère les informations du formulaire
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  let formulaire = $("form").serializeArray();
+  postData.contact = {
+    firstName: formulaire[0].value,
+    lastName: formulaire[1].value,
+    address: formulaire[2].value,
+    city: formulaire[3].value,
+    email: formulaire[4].value,
+  };
+  postData.products.push();
+  console.log(formulaire);
+});

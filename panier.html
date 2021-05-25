@@ -177,7 +177,8 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
     <h2 class="mx-3 my-5 text-center text-white font-weight-bold">
       VOTRE PANIER
     </h2>
-    <div class="table-responsive-sm bg-white my-5 mx-5 text-center">
+    <div class="container bg-white d-flex justify-content-center">
+      <div class="text-center">
       <table class="table">
         <thead>
           <tr class="text-primary font-weight-bold text-uppercase">
@@ -188,11 +189,26 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
             <th scope="col">Supprimer</th>
           </tr>
         </thead>
+        <!-- produit(s) commandé(s) -->
         <tbody
           id="basketProductContent"
           class="mx-3 my-5 text-center text-secondary font-weight-bold"
-        ></tbody>
+        >
+
+      </tbody>
       </table>
+      <!-- prix total panier-->
+ <ul class="list-group">
+        <li class="list-group-item text-right h4 d-flex justify-content-between align-items-center">
+          <span class="font-italic h6 mb-0">("Livraison comprise dans le prix total")</span>
+          <span class="font-weight-bold">Prix Total panier :</span>
+          <span class="bg-primary font-weight-bold px-1" id="totalPrice">
+          </span>
+          <span class="badge badge-pill">
+            <i class="fas fa-cash-register fa-2x"></i></span>
+        </li>
+      </ul>
+      </div>
       </div>
       <!-- /.Panier -->
 
@@ -265,7 +281,7 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
                 type="text"
                 class="form-control"
                 id="address"
-                placeholder="Adresse valide"
+                placeholder="Adresse + code postal"
                 name="address"
                 required
               />
@@ -287,12 +303,12 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
               <input
                 class="form-check-input"
                 type="checkbox"
-                value=""
-                id="invalidCheck3"
-                name="invalidCheck3"
+                value="Acceptés"
+                id="termes-conditions"
+                name="termes-conditions"
                 required
               />
-              <label class="form-check-label text-primary" for="invalidCheck3">
+              <label class="form-check-label text-primary" for="termes-conditions">
                 Accepter les termes et conditions svp.
               </label>
             </div>
@@ -414,7 +430,7 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
     ></script>
     <!-- JS du site -->
     <script src="JS/panier.js"></script>
-    <script src="JS/orifurniture.js"></script>
+    <script src="JS/formulaire.js"></script>
 
     <!-- Javascript END -->
   </body>
