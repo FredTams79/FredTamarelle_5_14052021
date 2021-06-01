@@ -1,5 +1,10 @@
 //// FORMULAIRE /////
 
+//récupération du prix total commande
+
+let totalPriceConfirmation = document.getElementById("totalPrice").innerText;
+console.log("total prix pour page confirmation : " + totalPriceConfirmation);
+
 ////vérif adresse e-mail + RegExp = crée un objet expression rationnelle pour la reconnaissance d'un modèle dans un texte.
 let valueEmail = document.getElementById("email");
 let alertEmail = document.getElementById("alert-email");
@@ -12,7 +17,8 @@ function validEmail(eMail) {
   );
 
   return reg.test(eMail.toLowerCase()); // tolowercase() = retourne la chaîne de caractères courants en minuscules.
-  console.log("test mail : " + eMail);
+  console.log("test mail : ");
+  console.log(eMail);
 }
 
 form.addEventListener("input", () => {
@@ -27,23 +33,76 @@ form.addEventListener("input", () => {
   }
 });
 
-////
+///gestion du formulaire
+
 const postData = {
   contact: {},
-  products: ["5be9cc611c9d440000c1421e"],
+  products: [],
 };
+
+for (productId of userBasketContent) {
+  postData.products.push(productId._id);
+}
+
+const formulaireData = JSON.parse(localStorage.getItem("formulaireData"));
+const formulaireId = localStorage.getItem("formulaireId");
 
 //On récupère les informations du formulaire
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   let formulaire = $("form").serializeArray();
   postData.contact = {
     firstName: formulaire[0].value,
     lastName: formulaire[1].value,
-    address: formulaire[2].value,
-    city: formulaire[3].value,
-    email: formulaire[4].value,
+    email: formulaire[2].value,
+    address: formulaire[3].value,
+    city: formulaire[4].value,
   };
-  postData.products.push();
-  console.log(formulaire);
+
+  //Envoie des données avec la requête POST et récupérer un numéro ID
+  fetch("http://localhost:3000/api/furniture/order", {
+    method: "POST", // envoyer les données
+    headers: {
+      // donnent un peu plus d’information sur notre requête
+      Accept: "application/json", //  avec la valeur application/json
+      "Content-Type": "application/json", // avec la valeur  application/json
+    },
+    body: JSON.stringify(postData), //  les données qu’on souhaite envoyer  (en  dynamique)
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("order Id : " + data.orderId);
+      //mettre l'ID dans le local storage
+      localStorage.setItem("formulaireId", data.orderId);
+    });
+
+  //////récupérer les données pour les mettre dans le local storage/////
+  formulaireData.push(postData.contact);
+  localStorage.setItem("formulaireData", JSON.stringify(formulaireData));
+  console.log("Confirmation Cde : ");
+  console.log(formulaireData);
+
+  // Message confirmation commande
+  const confirmationFormulaire = () => {
+    if (
+      window.confirm(`Votre commande a bien été enregistrée
+Pour consulter la confirmation appuyer sur "OK"`)
+    ) {
+      window.location.href = `./confirmation.html?id=${formulaireId}&name=${postData.contact.firstName}&total=${totalPriceConfirmation}`;
+    }
+  };
+
+  confirmationFormulaire();
 });
+
+//////récupérer les données pour les mettre dans le local storage/////
+// renvoie la valeur de la clé correspondante
+if (localStorage.getItem("formulaireData")) {
+  console.log("formulaire à remplir");
+} else {
+  console.log("création de la commande");
+  // mettre l'objet postData dans le local storage
+  let formulaireEmpty = [];
+  localStorage.setItem("formulaireData", JSON.stringify(formulaireEmpty));
+}

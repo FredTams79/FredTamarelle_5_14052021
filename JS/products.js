@@ -10,8 +10,8 @@ if (localStorage.getItem("furniture")) {
   console.log("panier ok");
 } else {
   console.log("création du panier");
-  let init = [];
-  localStorage.setItem("furniture", JSON.stringify(init));
+  let basketEmpty = [];
+  localStorage.setItem("furniture", JSON.stringify(basketEmpty));
 }
 let basketContent = JSON.parse(localStorage.getItem("furniture"));
 
@@ -29,6 +29,7 @@ fetch(APIFurnitures)
     document.querySelector(
       "#imageId"
     ).innerHTML = `<img class="img-fluid" src="${data.imageUrl}" alt="photo de ${data.name}" />`;
+    //// description produit /////
     document.querySelector("#descriptionProduct").innerHTML = data.description;
     ////Choix des vernis////
     const varnishProduct = document.getElementById("varnishProduct");
@@ -84,25 +85,17 @@ Continuez votre visite sur notre site "ANNULER"`)
       });
   })
 
-  .catch((error) => console.log("Erreur : " + error)); // Une erreur est survenue
-
-////******* le local storage *********/////
-/////Récupération des valeurs JSON pour les mettre dans le panier/////
-//const basketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
-///******* manque le choix du vernis ********/////
-///// Ajout produit si déjà des produits dans le panier ////
-/* if (basketContent) {
-          basketContent.push(data);
-          localStorage.setItem("furniture", JSON.stringify(basketContent)); // convertir objet JavaScript en JSON
-          confirmationBasket();
-          ///// Ajout nouveau produit dans le panier /////
-        } else if (basketContent == false) {
-          basketContent = [];
-          basketContent.push(data);
-          /////Envoie du panier au local storage//////
-          localStorage.setItem("furniture", JSON.stringify(basketContent));
-          confirmationBasket();
-        } else {
-          localStorage.setItem("furniture", JSON.stringify([data]));
-          confirmationBasket();
-        }*/
+  .catch((error) => {
+    // Message d'erreur si produit non référencé
+    const erreurServeur = () => {
+      if (
+        window.confirm(`Erreur : le produit recherché n'est pas référencé !
+      Revenez à la page d'acceuil en cliquant sur OK`)
+      ) {
+        window.location.href = "index.html";
+      } else {
+        window.location.href = "index.html";
+      }
+    };
+    erreurServeur();
+  });
