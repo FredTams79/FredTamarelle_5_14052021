@@ -1,7 +1,7 @@
 //// FORMULAIRE /////
 
 //récupération du prix total commande
-
+// Comment éviter erreur null quand panier vide sur innerText ????
 let totalPriceConfirmation = document.getElementById("totalPrice").innerText;
 console.log("total prix pour page confirmation : " + totalPriceConfirmation);
 
