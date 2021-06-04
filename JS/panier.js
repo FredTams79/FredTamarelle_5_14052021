@@ -55,105 +55,270 @@ if (userBasketContent === null) {
   });
 }
 
-////********* Lignes ecrites pour aide ou info à vérifier et à supprimer ********//////
+////--------------- FORMULAIRE ----------------/////
 
-//.then((value) => { document.getElementById("").innerText = value.postData.text;
+//récupération du prix total commande
+// Comment éviter erreur null quand panier vide sur innerText ????
+let totalPriceConfirmation = document.getElementById("totalPrice").innerText;
+console.log("total prix pour page confirmation : " + totalPriceConfirmation);
 
-// document.getElementById("form").addEventListener("submit", confirmFormulaire);
+////vérif prénom + RegExp = crée un objet expression rationnelle pour la reconnaissance d'un modèle dans un texte.
+let valueFirstName = document.getElementById("firstName");
+let alertFirstName = document.getElementById("alert-firstName");
+let form = document.querySelector("form");
+console.log("prénom formulaire 01 : " + valueFirstName.value);
 
-// boucle pour ajout produit ligne par ligne
+function validFirstName(firstName) {
+  const regfirstName = new RegExp(
+    "^([a-zA-Z\u00C0-\u00FF]+([-]{1}[a-zA-Z\u00C0-\u00FF]+)*){3,30}$",
+    "g"
+  ); //permet les accents : [a-zA-Z\u00C0-\u00FF]
 
-//for (i = 0; i < userBasketContent.length; i++) {
-//basketProductContent.innerHTML = userBasketContent[i].name;
+  return regfirstName.test(firstName.toLowerCase()); // tolowercase() = retourne la chaîne de caractères courants en minuscules.
+}
 
-/*  console.log("nombre de produit : " + userBasketContent.length);
-    const displayBasketContent = [];
-    console.log("affichage contenu panier :");
-    console.log(displayBasketContent);
-    // Ligne prix total
-    let totalPrice = 0;
-    totalPrice = totalPrice + parseInt(userBasketContent.price / 100, 10);
-    console.log("prix : " + totalPrice);
-    ////// problème pour ajouter les valeurs du produit dans le tableau /////////
-    // + problème avec option vernis
-    displayBasketContent =
-      displayBasketContent +
-      `
-  
-    <tr>
-      <th scope="row">${userBasketContent[i]}</th>
-      <td>${userBasketContent[i].imageUrl}</td>
-      <td>${userBasketContent[i].name}</td>
-      <td>${userBasketContent[i].choixVarnish}</td> 
-      <td>${userBasketContent[i].price / 100} €</td>
-      <td><i class="fas fa-trash-alt"></i></td>
-    </tr>
-    <tr class="text-secondary font-weight-bold">
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td>Total :</td>
-            <td>1000 €</td>
-                  <td class="font-italic">(Livraison Offerte)</td>
-
-    </tr>
-    </tbody>
-  </table>
-</div>`;
-
-    basketProductContent.innerHTML = displayBasketContent;
+form.addEventListener("input", () => {
+  //On vérifie l prénom et on affiche un message d'erreur si non valide
+  if (validFirstName(valueFirstName.value) === false) {
+    alertFirstName.classList.remove("d-none");
+    alertFirstName.innerHTML = "<p>Veuillez écrire un prénom valide svp !</p>";
+  } else {
+    //Si valide, on supprime le message d'erreur
+    alertFirstName.classList.add("d-none");
   }
+  console.log("prénom formulaire 02 : " + valueFirstName.value);
+});
+
+////vérif Nom + RegExp.
+let valueLastName = document.getElementById("lastName");
+let alertLastName = document.getElementById("alert-lastName");
+form = document.querySelector("form");
+
+function validLastName(lastName) {
+  const regLastName = new RegExp(
+    "^([a-zA-Z\u00C0-\u00FF]+([ |-]{1}[a-zA-Z\u00C0-\u00FF]+)*[a-zA-Z]{0,2}([ |']{1}[a-zA-Z\u00C0-\u00FF]+)*){3,30}$",
+    "g"
+  );
+
+  return regLastName.test(lastName.toLowerCase()); // tolowercase() = retourne la chaîne de caractères courants en minuscules.
+}
+
+form.addEventListener("input", () => {
+  //On vérifie le  nom et on affiche un message d'erreur si non valide
+  if (validLastName(valueLastName.value) === false) {
+    alertLastName.classList.remove("d-none");
+    alertLastName.innerHTML = "<p>Veuillez écrire un nom valide svp !</p>";
+  } else {
+    //Si valide, on supprime le message d'erreur
+    alertLastName.classList.add("d-none");
+  }
+});
+
+////vérif adresse e-mail + RegExp = crée un objet expression rationnelle pour la reconnaissance d'un modèle dans un texte.
+let valueEmail = document.getElementById("email");
+let alertEmail = document.getElementById("alert-email");
+form = document.querySelector("form");
+
+function validEmail(eMail) {
+  const regEmail = new RegExp(
+    "^[a-z0-9]+([_|.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|.|-]{1}[a-z0-9]+)*[.]{1}[a-z]{2,6}$",
+    "i"
+  );
+
+  return regEmail.test(eMail.toLowerCase()); // tolowercase() = retourne la chaîne de caractères courants en minuscules.
+}
+
+form.addEventListener("input", () => {
+  //On vérifie l'eMail et on affiche un message d'erreur si non valide
+  if (validEmail(valueEmail.value) === false) {
+    alertEmail.classList.remove("d-none");
+    alertEmail.innerHTML =
+      "<p>Veuillez écrire une adresse mail valide svp !</p>";
+  } else {
+    //Si valide, on supprime le message d'erreur
+    alertEmail.classList.add("d-none");
+  }
+});
+
+////vérif adresse + RegExp.
+let valueAddress = document.getElementById("address");
+let alertAddress = document.getElementById("alert-address");
+form = document.querySelector("form");
+
+function validAddress(address) {
+  const regAddress = new RegExp(
+    "^([a-zA-Z0-9\u00C0-\u00FF]+([ |-]{1,3}[a-zA-Z0-9\u00C0-\u00FF]+)*[a-zA-Z]{0,2}([ |']{1}[a-zA-Z0-9\u00C0-\u00FF]+)*){3,50}$",
+    "g"
+  );
+
+  return regAddress.test(address.toLowerCase()); // tolowercase() = retourne la chaîne de caractères courants en minuscules.
+}
+
+form.addEventListener("input", () => {
+  //On vérifie l'adresse  et on affiche un message d'erreur si non valide
+  if (validAddress(valueAddress.value) === false) {
+    alertAddress.classList.remove("d-none");
+    alertAddress.innerHTML =
+      "<p>Veuillez écrire une adresse et un code postal valide svp !</p>";
+  } else {
+    //Si valide, on supprime le message d'erreur
+    alertAddress.classList.add("d-none");
+  }
+});
+
+////vérif ville + RegExp.
+
+let valueCity = document.getElementById("city");
+let alertCity = document.getElementById("alert-city");
+form = document.querySelector("form");
+
+function validCity(city) {
+  const regCity = new RegExp(
+    "^([a-zA-Z\u00C0-\u00FF]+([ |-]{1}[a-zA-Z\u00C0-\u00FF]+)*[a-zA-Z]{0,2}([ |']{1}[a-zA-Z\u00C0-\u00FF]+)*){3,30}$",
+    "g"
+  );
+
+  return regCity.test(city.toLowerCase()); // tolowercase() = retourne la chaîne de caractères courants en minuscules.
+}
+
+form.addEventListener("input", () => {
+  //On vérifie l'adresse  et on affiche un message d'erreur si non valide
+  if (validCity(valueCity.value) === false) {
+    alertCity.classList.remove("d-none");
+    alertCity.innerHTML = "<p>Veuillez écrire une ville valide svp !</p>";
+  } else {
+    //Si valide, on supprime le message d'erreur
+    alertCity.classList.add("d-none");
+  }
+});
+
+//Termes et Conditions
+/*
+let valueTermesConditions =
+  document.getElementById("termes-conditions").checked;
+let alertTermesConditions = document.getElementById("alert-termesConditions");
+//form = document.querySelector("form");
+console.log("termes - conditions : " + valueTermesConditions);
+
+form.addEventListener("input", () => {
+  //On vérifie l'adresse  et on affiche un message d'erreur si non valide
+  if (valueTermesConditions === false) {
+    alertTermesConditions.classList.remove("d-none");
+    alertTermesConditions.innerHTML =
+      "<p>Veuillez accepter les termes et conditions svp !</p>";
+  } else {
+    //Si valide, on supprime le message d'erreur
+    alertTermesConditions.classList.add("d-none");
+    alertTermesConditions = document.getElementById(
+      "alert-termesConditions"
+    ).disabled = true;
+    console.log("termes - conditions true ?: " + alertTermesConditions);
+  }
+});*/
+/*
+if ($("input[name=termes-conditions]").is(":checked")) {
+  alert("jQuery true");
+} else {
+  alert("jQuery false");
 }*/
 
-/*
-// faire un tableau pour mettre les produits ajoutés au click
-// Lignes Panier
-function basketLine(id, name, varnish, price, qte) {
-  this.idArticle = id;
-  this.nameArticle = name;
-  this.varnishArticle = varnish;
-  this.priceArticle = price;
-  this.qteArticle = qte;
-  //this.addQte = function (qte) {this.qteArticle += qte;}
-  console.log(basketLine);
-}
-this.getPriceLine = function () {
-  var resultat = this.priceArticle * this.qteArticle;
-  return resultat;
-};
+let valueTermesConditions = document.getElementById("termes-conditions");
+let alertTermesConditions = document.getElementById("alert-termesConditions");
+console.log("termes - conditions : " + valueTermesConditions.value);
+console.log("alert termes - conditions : " + alertTermesConditions.value);
 
+//On vérifie l'adresse  et on affiche un message d'erreur si non valide
+if (valueTermesConditions.checked == false) {
+  //valueTermesConditions.checked = false;
+  alertTermesConditions.classList.remove("d-none");
+  alertTermesConditions.innerHTML =
+    "<p>Veuillez accepter les termes et conditions svp !</p>";
+} else {
+  //if (valueTermesConditions.checked == true)
+  //valueTermesConditions.checked = true;
+  //Si valide, on supprime le message d'erreur
+  //alertTermesConditions = document.getElementById("alert-termesConditions").style.display = none;
 
-//Ajoute le produit dans le panier
+  document.getElementById("test").onclick = function () {
+    myCheckbox();
+  };
 
-function addToBasket(???) {
-  let contentBasket = JSON.parse(localStorage.getItem("key"));
-  if (contentBasket === false) {
-    contentBasket = [];
+  function myCheckbox() {
+    //alertTermesConditions.classList.add("d-none");
+    document.getElementById("test").innerText = "YOU CLICKED ME!";
   }
 }
 
-//Produit ajouter au local storage
+///gestion du formulaire
 
-contentBasket.push(?product?);
-localStorage.setItem("key", JSON.stringify(contentBasket));
-*/
+const postData = {
+  contact: {},
+  products: [],
+};
 
-//////******** gestion du bouton supprimer    *********//////
-/*
-        //Mise en place de la suppression de l'élément relatif au bouton "supprimé" cliqué
-        ({
-          let d = 0;
-         //remarque : '<button id="btnSupprimer-' + d + '" value="' + d + '" class="btn btn-warning"><i class="fa fa-trash" aria-hidden="true"></i> </button>';
-        
-        let btnSupprimer = document.getElementById('btnSupprimer-' + d);
-        btnSupprimer.onclick = function () {
-            userBasketContent.splice(btnSupprimer.value, 1);
-            localStorage.setItem("userBasketContent", JSON.stringify(userBasketContent));
-            document.location.reload(true);
-        if (userBasketContent.length === 0) {
-                localStorage.removeItem("userBasketContent");
-            }
-          };
-          d++;
-        })
-*/
+for (productId of userBasketContent) {
+  postData.products.push(productId._id);
+}
+
+const formulaireData = JSON.parse(localStorage.getItem("formulaireData"));
+const formulaireId = localStorage.getItem("formulaireId");
+
+//On récupère les informations du formulaire
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  let formulaire = $("form").serializeArray();
+  postData.contact = {
+    firstName: formulaire[0].value,
+    lastName: formulaire[1].value,
+    email: formulaire[2].value,
+    address: formulaire[3].value,
+    city: formulaire[4].value,
+  };
+
+  //Envoie des données avec la requête POST et récupérer un numéro ID
+  fetch("http://localhost:3000/api/furniture/order", {
+    method: "POST", // envoyer les données
+    headers: {
+      // donnent un peu plus d’information sur notre requête
+      Accept: "application/json", //  avec la valeur application/json
+      "Content-Type": "application/json", // avec la valeur  application/json
+    },
+    body: JSON.stringify(postData), //  les données qu’on souhaite envoyer  (en  dynamique)
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("order Id : " + data.orderId);
+      //mettre l'ID dans le local storage
+      localStorage.setItem("formulaireId", data.orderId);
+    });
+
+  //////récupérer les données pour les mettre dans le local storage/////
+  formulaireData.push(postData.contact);
+  localStorage.setItem("formulaireData", JSON.stringify(formulaireData));
+  console.log("Confirmation Cde : ");
+  console.log(formulaireData);
+
+  // Message confirmation commande
+  const confirmationFormulaire = () => {
+    if (
+      window.confirm(`Votre commande a bien été enregistrée
+Pour consulter la confirmation appuyer sur "OK"`)
+    ) {
+      window.location.href = `./confirmation.html?id=${formulaireId}&name=${postData.contact.firstName}&total=${totalPriceConfirmation}`;
+    }
+  };
+
+  confirmationFormulaire();
+});
+
+//////récupérer les données pour les mettre dans le local storage/////
+// renvoie la valeur de la clé correspondante
+if (localStorage.getItem("formulaireData")) {
+  console.log("formulaire à remplir");
+} else {
+  console.log("création de la commande");
+  // mettre l'objet postData dans le local storage
+  let formulaireEmpty = [];
+  localStorage.setItem("formulaireData", JSON.stringify(formulaireEmpty));
+}
