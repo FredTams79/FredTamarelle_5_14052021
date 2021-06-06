@@ -2,19 +2,26 @@ const userBasketContent = JSON.parse(localStorage.getItem("furniture")); // conv
 console.log("Panier :");
 console.log(userBasketContent);
 
-//////********* ??? gérer gestion même produit commandé ??? *******///////
-
 /////******* Affichage Panier vide quand zéro produit commandé ******/////
 const basketProductContent = document.querySelector("#basketProductContent");
 const basketNull = document.querySelector("#basketNull");
+
+//récupération du prix total commande
+// Comment éviter erreur null quand panier vide sur innerText ????
+let totalPriceConfirmation = document.getElementById("totalPrice").innerText;
+console.log("total prix pour page confirmation : " + totalPriceConfirmation);
 
 //si le panier est vide
 if (userBasketContent === null) {
   console.log("je suis vide");
   basketNull.innerHTML = `
   <div class="h2 my-5 mx-5 py-3 text-center text-primary text-uppercase font-weight-bold"><div>Votre panier est vide</div></div>`;
+
+  // ne pas afficher le formulaire si panier vide
+  document.getElementById("formulaire").style.opacity = 0;
 } else {
   userBasketContent.forEach((panier, index) => {
+    ////******** ajout des produits achetés *********////
     let productLine = document.createElement("tr");
 
     productLine.innerHTML = `
@@ -26,6 +33,16 @@ if (userBasketContent === null) {
     basketProductContent.appendChild(productLine);
 
     console.log(panier);
+
+    ////******** gestion du bouton supprimer *********////
+    document.getElementById("btnSupprimer").onclick = () => {
+      alert("bientôt mis en place !");
+    };
+
+    ////********* gérer gestion si même produit commandé *******/////
+    //à mettre en place ultérieurement
+    ////********* quantité produit *******/////
+    //à mettre en place ultérieurement
 
     ////******* Calcul prix total panier  ******/////
 
@@ -57,11 +74,6 @@ if (userBasketContent === null) {
 
 ////--------------- FORMULAIRE ----------------/////
 
-//récupération du prix total commande
-// Comment éviter erreur null quand panier vide sur innerText ????
-let totalPriceConfirmation = document.getElementById("totalPrice").innerText;
-console.log("total prix pour page confirmation : " + totalPriceConfirmation);
-
 ////vérif prénom + RegExp = crée un objet expression rationnelle pour la reconnaissance d'un modèle dans un texte.
 let valueFirstName = document.getElementById("firstName");
 let alertFirstName = document.getElementById("alert-firstName");
@@ -78,7 +90,7 @@ function validFirstName(firstName) {
 }
 
 form.addEventListener("input", () => {
-  //On vérifie l prénom et on affiche un message d'erreur si non valide
+  //On vérifie le prénom et on affiche un message d'erreur si non valide
   if (validFirstName(valueFirstName.value) === false) {
     alertFirstName.classList.remove("d-none");
     alertFirstName.innerHTML = "<p>Veuillez écrire un prénom valide svp !</p>";
@@ -191,63 +203,6 @@ form.addEventListener("input", () => {
     alertCity.classList.add("d-none");
   }
 });
-
-//Termes et Conditions
-/*
-let valueTermesConditions =
-  document.getElementById("termes-conditions").checked;
-let alertTermesConditions = document.getElementById("alert-termesConditions");
-//form = document.querySelector("form");
-console.log("termes - conditions : " + valueTermesConditions);
-
-form.addEventListener("input", () => {
-  //On vérifie l'adresse  et on affiche un message d'erreur si non valide
-  if (valueTermesConditions === false) {
-    alertTermesConditions.classList.remove("d-none");
-    alertTermesConditions.innerHTML =
-      "<p>Veuillez accepter les termes et conditions svp !</p>";
-  } else {
-    //Si valide, on supprime le message d'erreur
-    alertTermesConditions.classList.add("d-none");
-    alertTermesConditions = document.getElementById(
-      "alert-termesConditions"
-    ).disabled = true;
-    console.log("termes - conditions true ?: " + alertTermesConditions);
-  }
-});*/
-/*
-if ($("input[name=termes-conditions]").is(":checked")) {
-  alert("jQuery true");
-} else {
-  alert("jQuery false");
-}*/
-
-let valueTermesConditions = document.getElementById("termes-conditions");
-let alertTermesConditions = document.getElementById("alert-termesConditions");
-console.log("termes - conditions : " + valueTermesConditions.value);
-console.log("alert termes - conditions : " + alertTermesConditions.value);
-
-//On vérifie l'adresse  et on affiche un message d'erreur si non valide
-if (valueTermesConditions.checked == false) {
-  //valueTermesConditions.checked = false;
-  alertTermesConditions.classList.remove("d-none");
-  alertTermesConditions.innerHTML =
-    "<p>Veuillez accepter les termes et conditions svp !</p>";
-} else {
-  //if (valueTermesConditions.checked == true)
-  //valueTermesConditions.checked = true;
-  //Si valide, on supprime le message d'erreur
-  //alertTermesConditions = document.getElementById("alert-termesConditions").style.display = none;
-
-  document.getElementById("test").onclick = function () {
-    myCheckbox();
-  };
-
-  function myCheckbox() {
-    //alertTermesConditions.classList.add("d-none");
-    document.getElementById("test").innerText = "YOU CLICKED ME!";
-  }
-}
 
 ///gestion du formulaire
 

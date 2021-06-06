@@ -1,10 +1,6 @@
 ////********* Lignes ecrites pour aide ou info à vérifier et à supprimer ********//////
 
-//.then((value) => { document.getElementById("").innerText = value.postData.text;
-
-// document.getElementById("form").addEventListener("submit", confirmFormulaire);
-
-// boucle pour ajout produit ligne par ligne
+//---------- boucle pour ajout produit ligne par ligne ---------//
 
 //for (i = 0; i < userBasketContent.length; i++) {
 //basketProductContent.innerHTML = userBasketContent[i].name;
@@ -46,34 +42,9 @@
 
     basketProductContent.innerHTML = displayBasketContent;
   }
-}*/
+*/
 
 /*
-// faire un tableau pour mettre les produits ajoutés au click
-// Lignes Panier
-function basketLine(id, name, varnish, price, qte) {
-  this.idArticle = id;
-  this.nameArticle = name;
-  this.varnishArticle = varnish;
-  this.priceArticle = price;
-  this.qteArticle = qte;
-  //this.addQte = function (qte) {this.qteArticle += qte;}
-  console.log(basketLine);
-}
-this.getPriceLine = function () {
-  var resultat = this.priceArticle * this.qteArticle;
-  return resultat;
-};
-
-
-//Ajoute le produit dans le panier
-
-function addToBasket(???) {
-  let contentBasket = JSON.parse(localStorage.getItem("key"));
-  if (contentBasket === false) {
-    contentBasket = [];
-  }
-}
 
 //Produit ajouter au local storage
 
@@ -84,19 +55,62 @@ localStorage.setItem("key", JSON.stringify(contentBasket));
 //////******** gestion du bouton supprimer    *********//////
 /*
         //Mise en place de la suppression de l'élément relatif au bouton "supprimé" cliqué
-        ({
           let d = 0;
-         //remarque : '<button id="btnSupprimer-' + d + '" value="' + d + '" class="btn btn-warning"><i class="fa fa-trash" aria-hidden="true"></i> </button>';
+         //remarque : '<button id="btnSupprimer-${d}" value="${d}"></button>';
         
         let btnSupprimer = document.getElementById('btnSupprimer-' + d);
         btnSupprimer.onclick = function () {
             userBasketContent.splice(btnSupprimer.value, 1);
-            localStorage.setItem("userBasketContent", JSON.stringify(userBasketContent));
-            document.location.reload(true);
+            localStorage.setItem("userBasketContent", JSON.stringify(userBasketContent));//Mise à jour du nouveau panier avec suppression de l'article
+            document.location.reload();   //recharge la page
         if (userBasketContent.length === 0) {
                 localStorage.removeItem("userBasketContent");
             }
           };
           d++;
-        })
+*/
+//function deleteFunction() {document.getElementById("btnSupprimer").deleteRow(0);}
+//function deleteItem() {localStorage.removeItem("userBasketContent");}
+//Supprimer un produit du panier :
+//"removeArticle".addEventListener("click", (event) => {this.btnSupprimer();})
+
+//----------Termes et Conditions-------------//
+/*
+let valueTermesConditions =
+  document.getElementById("termes-conditions").checked;
+let alertTermesConditions = document.getElementById("alert-termesConditions");
+//form = document.querySelector("form");
+console.log("termes - conditions : " + valueTermesConditions);
+
+form.addEventListener("input", () => {
+  //On vérifie l'adresse  et on affiche un message d'erreur si non valide
+  if (valueTermesConditions === false) {
+    alertTermesConditions.classList.remove("d-none");
+    alertTermesConditions.innerHTML =
+      "<p>Veuillez accepter les termes et conditions svp !</p>";
+  } else {
+    //Si valide, on supprime le message d'erreur
+    alertTermesConditions.classList.add("d-none");
+    alertTermesConditions = document.getElementById(
+      "alert-termesConditions"
+    ).disabled = true;
+    console.log("termes - conditions true ?: " + alertTermesConditions);
+  }
+});*/
+/*
+if ($("input[name=termes-conditions]").is(":checked")) {
+  alert("jQuery true");
+} else {
+  alert("jQuery false");
+}*/
+
+/*
+  document.getElementById("test").onclick = function () {
+    myCheckbox();
+  };
+
+  function myCheckbox() {
+    //alertTermesConditions.classList.add("d-none");
+    document.getElementById("test").innerText = "YOU CLICKED ME!";
+  }
 */
