@@ -179,266 +179,282 @@ Orifurniture fait parti du groupe Orinoco comme Oribook et Oritextil."
     </h2>
     <div class="container bg-white d-flex justify-content-center">
       <div class="text-center" id="basketNull">
-      <table class="table">
-        <thead>
-          <tr class="text-primary font-weight-bold text-uppercase">
-            <th scope="col">
-              <i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Produit(s)
-            </th>
-            <th scope="col" class="w-25">Prix</th>
-            <th scope="col">Supprimer</th>
-          </tr>
-        </thead>
-        <!-- produit(s) commandé(s) -->
-        <tbody
-          id="basketProductContent"
-          class="mx-3 my-5 text-center text-secondary font-weight-bold"
-        >
-
-      </tbody>
-      </table>
-      <!-- prix total panier-->
- <ul class="list-group">
-        <li class="list-group-item text-right h4 d-flex justify-content-between align-items-center">
-          <span class="font-italic h6 mb-0">("Livraison comprise dans le prix total")</span>
-          <span class="font-weight-bold">Prix Total panier :</span>
-          <span class="bg-primary font-weight-bold px-1" id="totalPrice">
-          </span>
-          <span class="badge badge-pill">
-            <i class="fas fa-cash-register fa-2x"></i></span>
-        </li>
-      </ul>
-      </div>
-      </div>
-      <!-- /.Panier -->
-
-      <!-- FORMULAIRE -->
-      <div
-        id="formulaire"
-        class="mx-3 my-5 text-center text-white font-weight-bold"
-      >
-        <h2 class="font-weight-bold">FORMULAIRE</h2>
-        <p class="text-primary">
-          &Agrave; remplir avant de passer votre commande svp !
-        </p>
-        <form>
-          <div class="form-row justify-content-center">
-            <div class="col-md-4 mb-3">
-              <label for="firstName">Prénom :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="firstName"
-                placeholder="votre prénom"
-                name="firstName"
-                required
-              />
-              <div class="
-                    alert alert-danger
-                    text-center
-                    w-100
-                    py-2
-                    my-2
-                    d-none
-                    fade
-                    show
-                  "
-                  role="alert"
-                  id="alert-firstName"
-                ></div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="lastName">Nom :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="lastName"
-                placeholder="votre nom"
-                name="lastName"
-                required
-              />
-              <div class="
-                    alert alert-danger
-                    text-center
-                    w-100
-                    py-2
-                    my-2
-                    d-none
-                    fade
-                    show
-                  "
-                  role="alert"
-                  id="alert-lastName"
-                ></div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="email">E-mail :</label>
-              <div class="input-group">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  placeholder="exemple@email.com"
-                  aria-describedby="inputGroupPrepend3"
-                  name="email"
-                  required
-                />
-                <div
-                  class="
-                    alert alert-danger
-                    text-center
-                    w-100
-                    py-2
-                    my-2
-                    d-none
-                    fade
-                    show
-                  "
-                  role="alert"
-                  id="alert-email"
-                ></div>
-              </div>
-            </div>
-          </div>
-          <div class="form-row justify-content-center">
-            <div class="col-md-6 mb-3">
-              <label for="address">Adresse :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="address"
-                placeholder="Adresse - code postal"
-                name="address"
-                required
-              />
-              <div class="
-                    alert alert-danger
-                    text-center
-                    w-100
-                    py-2
-                    my-2
-                    d-none
-                    fade
-                    show
-                  "
-                  role="alert"
-                  id="alert-address"
-                ></div>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="city">Ville :</label>
-              <input
-                type="text"
-                class="form-control"
-                id="city"
-                placeholder="votre Ville"
-                name="city"
-                required
-              />
-              <div class="
-                    alert alert-danger
-                    text-center
-                    w-100
-                    py-2
-                    my-2
-                    d-none
-                    fade
-                    show
-                  "
-                  role="alert"
-                  id="alert-city"
-                ></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value="Acceptés"
-                id="termes-conditions"
-                name="termes-conditions"
-                required
-              />
-                             <label class="form-check-label text-primary" for="termes-conditions">
-                Accepter les termes et conditions svp.
-                              </label>
-                                                            </div>
-          </div>
-          <button
-            id="confirmFormulaire"
+        <table class="table">
+          <thead>
+            <tr class="text-primary font-weight-bold text-uppercase">
+              <th scope="col">
+                <i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Produit(s)
+              </th>
+              <th scope="col" class="w-25">Prix</th>
+              <th scope="col">Supprimer</th>
+            </tr>
+          </thead>
+          <!-- produit(s) commandé(s) -->
+          <tbody
+            id="basketProductContent"
+            class="mx-3 my-5 text-center text-secondary font-weight-bold"
+          ></tbody>
+        </table>
+        <!-- prix total panier-->
+        <ul class="list-group">
+          <li
             class="
-              intro-button
-              mx-auto
-              btn btn-primary btn-xl btn-text
-              mt-3
-              text-uppercase
-              justify-content-center
+              list-group-item
+              text-right
+              h4
+              d-flex
+              justify-content-between
+              align-items-center
             "
-            type="submit"
-            value="Valider"
           >
-            <i class="fas fa-truck"></i>&nbsp;&nbsp;Validez votre commande !
-          </button>
-        </form>
+            <span class="font-italic h6 mb-0"
+              >("Livraison comprise dans le prix total")</span
+            >
+            <span class="font-weight-bold">Prix Total panier :</span>
+            <span class="bg-primary font-weight-bold px-1" id="totalPrice">
+            </span>
+            <span class="badge badge-pill">
+              <i class="fas fa-cash-register fa-2x"></i
+            ></span>
+          </li>
+        </ul>
       </div>
-      <!-- END FORMULAIRE -->
-      <!-- Related Projects Row -->  
-      <h3 class="mx-5 my-4 text-white">Nos autres meubles</h3>
-
-      <div class="row justify-content-center text-center">
-        <div class="col-md-2 col-sm-6 mb-4">
-          <a href="products.html?id=5be9cc611c9d440000c1421e">
-            <img
-              class="img-fluid"
-              src="http://localhost:3000/images/oak_1.jpg"
-              alt="photo de "
-            />
-          </a>
-        </div>
-
-        <div class="col-md-2 col-sm-6 mb-4">
-          <a href="products.html?id=5beaadda1c9d440000a57d98">
-            <img
-              class="img-fluid"
-              src="http://localhost:3000/images/oak_2.jpg"
-              alt=""
-            />
-          </a>
-        </div>
-
-        <div class="col-md-2 col-sm-6 mb-4">
-          <a href="products.html?id=5beaae361c9d440000a57d99">
-            <img
-              class="img-fluid"
-              src="http://localhost:3000/images/oak_3.jpg"
-              alt=""
-            />
-          </a>
-        </div>
-
-        <div class="col-md-2 col-sm-6 mb-4">
-          <a href="products.html?id=5beaaf2e1c9d440000a57d9a">
-            <img
-              class="img-fluid"
-              src="http://localhost:3000/images/oak_4.jpg"
-              alt=""
-            />
-          </a>
-        </div>
-
-        <div class="col-md-2 col-sm-6 mb-4">
-          <a href="products.html?id=5beab2061c9d440000a57d9b">
-            <img
-              class="img-fluid"
-              src="http://localhost:3000/images/oak_5.jpg"
-              alt=""
-            />
-          </a>
-        </div>
-      </div>
-      <!-- /.row -->
     </div>
+    <!-- /.Panier -->
+
+    <!-- FORMULAIRE -->
+    <div
+      id="formulaire"
+      class="mx-3 my-5 text-center text-white font-weight-bold"
+    >
+      <h2 class="font-weight-bold">FORMULAIRE</h2>
+      <p class="text-primary">
+        &Agrave; remplir avant de passer votre commande svp !
+      </p>
+      <form>
+        <div class="form-row justify-content-center">
+          <div class="col-md-4 mb-3">
+            <label for="firstName">Prénom :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              placeholder="votre prénom"
+              name="firstName"
+              required
+            />
+            <div
+              class="
+                alert alert-danger
+                text-center
+                w-100
+                py-2
+                my-2
+                d-none
+                fade
+                show
+              "
+              role="alert"
+              id="alert-firstName"
+            ></div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="lastName">Nom :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="votre nom"
+              name="lastName"
+              required
+            />
+            <div
+              class="
+                alert alert-danger
+                text-center
+                w-100
+                py-2
+                my-2
+                d-none
+                fade
+                show
+              "
+              role="alert"
+              id="alert-lastName"
+            ></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="email">E-mail :</label>
+            <div class="input-group">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="exemple@email.com"
+                name="email"
+                required
+              />
+              <div
+                class="
+                  alert alert-danger
+                  text-center
+                  w-100
+                  py-2
+                  my-2
+                  d-none
+                  fade
+                  show
+                "
+                role="alert"
+                id="alert-email"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row justify-content-center">
+          <div class="col-md-6 mb-3">
+            <label for="address">Adresse :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Adresse - code postal"
+              name="address"
+              required
+            />
+            <div
+              class="
+                alert alert-danger
+                text-center
+                w-100
+                py-2
+                my-2
+                d-none
+                fade
+                show
+              "
+              role="alert"
+              id="alert-address"
+            ></div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="city">Ville :</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              placeholder="votre Ville"
+              name="city"
+              required
+            />
+            <div
+              class="
+                alert alert-danger
+                text-center
+                w-100
+                py-2
+                my-2
+                d-none
+                fade
+                show
+              "
+              role="alert"
+              id="alert-city"
+            ></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="Acceptés"
+              id="termes-conditions"
+              name="termes-conditions"
+              required
+            />
+            <label
+              class="form-check-label text-primary"
+              for="termes-conditions"
+            >
+              Accepter les termes et conditions svp.
+            </label>
+          </div>
+        </div>
+        <button
+          id="confirmFormulaire"
+          class="
+            intro-button
+            mx-auto
+            btn btn-primary btn-xl btn-text
+            mt-3
+            text-uppercase
+            justify-content-center
+          "
+          type="submit"
+          value="Valider"
+        >
+          <i class="fas fa-truck"></i>&nbsp;&nbsp;Validez votre commande !
+        </button>
+      </form>
+    </div>
+    <!-- END FORMULAIRE -->
+    <!-- Related Projects Row -->
+    <h3 class="mx-5 my-4 text-white">Nos autres meubles</h3>
+
+    <div class="row justify-content-center text-center">
+      <div class="col-md-2 col-sm-6 mb-4">
+        <a href="products.html?id=5be9cc611c9d440000c1421e">
+          <img
+            class="img-fluid"
+            src="http://localhost:3000/images/oak_1.jpg"
+            alt="photo de "
+          />
+        </a>
+      </div>
+
+      <div class="col-md-2 col-sm-6 mb-4">
+        <a href="products.html?id=5beaadda1c9d440000a57d98">
+          <img
+            class="img-fluid"
+            src="http://localhost:3000/images/oak_2.jpg"
+            alt=""
+          />
+        </a>
+      </div>
+
+      <div class="col-md-2 col-sm-6 mb-4">
+        <a href="products.html?id=5beaae361c9d440000a57d99">
+          <img
+            class="img-fluid"
+            src="http://localhost:3000/images/oak_3.jpg"
+            alt=""
+          />
+        </a>
+      </div>
+
+      <div class="col-md-2 col-sm-6 mb-4">
+        <a href="products.html?id=5beaaf2e1c9d440000a57d9a">
+          <img
+            class="img-fluid"
+            src="http://localhost:3000/images/oak_4.jpg"
+            alt=""
+          />
+        </a>
+      </div>
+
+      <div class="col-md-2 col-sm-6 mb-4">
+        <a href="products.html?id=5beab2061c9d440000a57d9b">
+          <img
+            class="img-fluid"
+            src="http://localhost:3000/images/oak_5.jpg"
+            alt=""
+          />
+        </a>
+      </div>
+    </div>
+    <!-- /.row -->
+
     <!-- /.container -->
     <!-- SECTION PRODUITS END-->
 

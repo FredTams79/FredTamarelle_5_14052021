@@ -235,11 +235,11 @@ form.addEventListener("submit", async (e) => {
   fetch("http://localhost:3000/api/furniture/order", {
     method: "POST", // envoyer les données
     headers: {
-      // donnent un peu plus d’information sur notre requête
+      // donne un peu plus d’information sur notre requête
       Accept: "application/json", //  avec la valeur application/json
       "Content-Type": "application/json", // avec la valeur  application/json
     },
-    body: JSON.stringify(postData), //  les données qu’on souhaite envoyer  (en  dynamique)
+    body: JSON.stringify(postData), //  les données qu’on souhaite envoyer
   })
     .then((response) => response.json())
     .then((data) => {
@@ -253,6 +253,11 @@ form.addEventListener("submit", async (e) => {
   localStorage.setItem("formulaireData", JSON.stringify(formulaireData));
   console.log("Confirmation Cde : ");
   console.log(formulaireData);
+
+  // pour éviter le message d'erreur : "Uncaught (in promise) TypeError: Cannot read property 'push' of null"
+  if (formulaireData == null) {
+    formulaireData = [];
+  }
 
   // Message confirmation commande
   const confirmationFormulaire = () => {
