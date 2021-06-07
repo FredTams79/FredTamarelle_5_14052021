@@ -73,8 +73,8 @@ fetch(APIFurnitures)
         const confirmationBasket = () => {
           if (
             window.confirm(`Votre "${data.name}" avec vernis "${choixVarnish}" a bien été ajouté(e) au panier
-Consultez le panier "OK" ou
-Continuez votre visite sur notre site "ANNULER"`)
+Consulter le panier "OK" ou
+Continuer votre visite sur notre site "ANNULER"`)
           ) {
             window.location.href = "panier.html";
           } else {
@@ -90,7 +90,7 @@ Continuez votre visite sur notre site "ANNULER"`)
     const erreurServeur = () => {
       if (
         window.confirm(`Erreur : le produit recherché n'est pas référencé !
-      Revenez à la page d'accueil en cliquant sur OK`)
+      Veuillez revenir à la page d'accueil en cliquant sur "OK" svp !`)
       ) {
         window.location.href = "index.html";
       } else {

@@ -227,7 +227,7 @@ const formulaireId = localStorage.getItem("formulaireId");
 const totalPriceCde = JSON.parse(localStorage.getItem("totalPriceCde"));
 
 //On récupère les informations du formulaire
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let formulaire = $("form").serializeArray();
@@ -240,8 +240,34 @@ form.addEventListener("submit", async (e) => {
   };
   console.log("formulaire :");
   console.log(formulaire);
-  console.log(postData.products);
-  //Envoie des données avec la requête POST et récupérer un numéro ID
+  console.log("id pdt : " + postData.products);
+
+  ///***récupérer les données pour les mettre dans le local storage***///
+  //Prénom
+  localStorage.setItem("formulaireData", JSON.stringify(postData.contact));
+  console.log("Confirmation Cde prenom + prix : ");
+  console.log(postData.contact.firstName);
+  //Prix Total
+  localStorage.setItem("totalPriceCde", JSON.stringify(totalPriceConfirmation));
+  console.log(totalPriceConfirmation);
+
+  //formulaireId = data.orderId;
+  //console.log("num Id : " + formulaireId);
+  //console.log("order Id 2 : " + data.orderId);
+
+  ///***Message confirmation commande***///
+  const confirmationFormulaire = () => {
+    if (
+      window.confirm(`Votre commande a bien été enregistrée.
+Pour consulter la confirmation appuyer sur "OK" svp !`)
+    ) {
+      window.location.href = `./confirmation.html?id=${formulaireId}&name=${postData.contact.firstName}&total=${totalPriceConfirmation}`;
+    }
+  };
+
+  confirmationFormulaire();
+
+  ///***Envoie des données avec la requête POST et récupérer un numéro ID***///
   fetch("http://localhost:3000/api/furniture/order", {
     method: "POST", // envoyer les données
     headers: {
@@ -253,29 +279,11 @@ form.addEventListener("submit", async (e) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("order Id : " + data.orderId);
       //mettre l'ID dans le local storage
       localStorage.setItem("formulaireId", data.orderId);
+
+      console.log("order Id : " + data.orderId);
+      console.log("formulaireId : ");
+      console.log(formulaireId);
     });
-
-  ///***récupérer les données pour les mettre dans le local storage***///
-  //Prénom
-  localStorage.setItem("formulaireData", JSON.stringify(postData.contact));
-  console.log("Confirmation Cde prenom + prix : ");
-  console.log(postData.contact.firstName);
-  //Prix Total
-  localStorage.setItem("totalPriceCde", JSON.stringify(totalPriceConfirmation));
-  console.log(totalPriceConfirmation);
-
-  ///***Message confirmation commande***///
-  const confirmationFormulaire = () => {
-    if (
-      window.confirm(`Votre commande a bien été enregistrée
-Pour consulter la confirmation appuyer sur "OK"`)
-    ) {
-      window.location.href = `./confirmation.html?id=${formulaireId}&name=${postData.contact.firstName}&total=${totalPriceConfirmation}`;
-    }
-  };
-
-  confirmationFormulaire();
 });

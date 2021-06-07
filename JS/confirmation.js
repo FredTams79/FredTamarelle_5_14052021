@@ -2,7 +2,7 @@
 ///*** renvoie la valeur de la clé correspondante ***///
 const formulaireData = JSON.parse(localStorage.getItem("formulaireData"));
 console.log("Confirmation Cde : ");
-console.log(formulaireData.firstName);
+//console.log(formulaireData.firstName);
 const formulaireId = localStorage.getItem("formulaireId");
 console.log("Confirmation Id : ");
 console.log(formulaireId);
@@ -15,7 +15,7 @@ if (formulaireId == null || formulaireData.firstName == null) {
   const erreurServeurCde = () => {
     if (
       window.confirm(`Erreur : il n'y a pas de commande encore validée !
-      Revenez à la page d'acceuil en cliquant sur OK`)
+      Veuillez revenir à la page d'acceuil en cliquant sur "OK" svp`)
     ) {
       window.location.href = "index.html";
     } else {
