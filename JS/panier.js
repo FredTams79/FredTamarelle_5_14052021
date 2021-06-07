@@ -1,27 +1,34 @@
+/////--------- Affichage Panier vide quand zéro produit commandé ----------/////
+const basketProductContent = document.querySelector("#basketProductContent");
+const basketNull = document.querySelector("#basketNull");
+
+///***récupération du prix total commande***///
+// Comment éviter erreur null quand panier vide sur innerText ????
+let totalPriceConfirmation = document.getElementById("totalPrice").innerText;
+
+///***si le panier est vide***///
+if (localStorage.getItem("furniture")) {
+  console.log("panier ok");
+} else {
+  console.log("création du panier");
+  let basketEmpty = [];
+  localStorage.setItem("furniture", JSON.stringify(basketEmpty));
+}
+
 const userBasketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
 console.log("Panier :");
 console.log(userBasketContent);
 
-/////******* Affichage Panier vide quand zéro produit commandé ******/////
-const basketProductContent = document.querySelector("#basketProductContent");
-const basketNull = document.querySelector("#basketNull");
-
-//récupération du prix total commande
-// Comment éviter erreur null quand panier vide sur innerText ????
-let totalPriceConfirmation = document.getElementById("totalPrice").innerText;
-console.log("total prix pour page confirmation : " + totalPriceConfirmation);
-
-//si le panier est vide
-if (userBasketContent === null) {
+if (userBasketContent.length == 0) {
   console.log("je suis vide");
   basketNull.innerHTML = `
   <div class="h2 my-5 mx-5 py-3 text-center text-primary text-uppercase font-weight-bold"><div>Votre panier est vide</div></div>`;
 
-  // ne pas afficher le formulaire si panier vide
+  ///***ne pas afficher le formulaire si panier vide***///
   document.getElementById("formulaire").style.opacity = 0;
 } else {
   userBasketContent.forEach((panier, index) => {
-    ////******** ajout des produits achetés *********////
+    /// ajout des produits achetés ///
     let productLine = document.createElement("tr");
 
     productLine.innerHTML = `
@@ -34,21 +41,19 @@ if (userBasketContent === null) {
 
     console.log(panier);
 
-    ////******** gestion du bouton supprimer *********////
+    ///***gestion du bouton supprimer***///
     document.getElementById("btnSupprimer").onclick = () => {
-      alert("bientôt mis en place !");
+      alert("en travaux : bientôt en service !");
     };
 
-    ////********* gérer gestion si même produit commandé *******/////
-    //à mettre en place ultérieurement
-    ////********* quantité produit *******/////
-    //à mettre en place ultérieurement
+    ///gérer gestion si même produit commandé/// => //à mettre en place ultérieurement
+    ///quantité produit/// =>  //à mettre en place ultérieurement
 
-    ////******* Calcul prix total panier  ******/////
+    ////***Calcul prix total panier****///
 
     let priceAdditionnal = [];
 
-    // récupérer prix de chaque produit
+    ///récupérer prix de chaque produit///
     for (p = 0; p < userBasketContent.length; p++) {
       priceAdditionnal.push(userBasketContent[p].price / 100);
     }
@@ -56,29 +61,32 @@ if (userBasketContent === null) {
       "prix de tout les produits a additionner : " + priceAdditionnal
     );
 
-    // additionner les prix avec la méthode .reduce
+    ///additionner les prix avec la méthode .reduce///
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     const totalPrice = priceAdditionnal.reduce(reducer, 0);
 
-    // Affichage produit acheté du panier dans HTML
+    ///Affichage produit acheté du panier dans HTML///
     let affichageTotalPrice = document.querySelector("#totalPrice");
     affichageTotalPrice.innerText = totalPrice + " €";
 
     console.log("prix total : " + affichageTotalPrice.innerText);
     console.log("prix total afficher tableau panier = " + totalPrice + " €");
+    totalPriceConfirmation = affichageTotalPrice.innerText;
+    console.log(
+      "total prix pour page confirmation : " + totalPriceConfirmation
+    );
 
-    //vider le panier une fois commande validée
+    ///vider le panier une fois commande validée///
     localStorage.removeItem("userBasketContent");
   });
 }
 
 ////--------------- FORMULAIRE ----------------/////
 
-////vérif prénom + RegExp = crée un objet expression rationnelle pour la reconnaissance d'un modèle dans un texte.
+///***vérif prénom + RegExp = crée un objet expression rationnelle pour la reconnaissance d'un modèle dans un texte***///
 let valueFirstName = document.getElementById("firstName");
 let alertFirstName = document.getElementById("alert-firstName");
 let form = document.querySelector("form");
-console.log("prénom formulaire 01 : " + valueFirstName.value);
 
 function validFirstName(firstName) {
   const regfirstName = new RegExp(
@@ -98,10 +106,9 @@ form.addEventListener("input", () => {
     //Si valide, on supprime le message d'erreur
     alertFirstName.classList.add("d-none");
   }
-  console.log("prénom formulaire 02 : " + valueFirstName.value);
 });
 
-////vérif Nom + RegExp.
+///***vérif Nom + RegExp.***///
 let valueLastName = document.getElementById("lastName");
 let alertLastName = document.getElementById("alert-lastName");
 form = document.querySelector("form");
@@ -126,7 +133,7 @@ form.addEventListener("input", () => {
   }
 });
 
-////vérif adresse e-mail + RegExp = crée un objet expression rationnelle pour la reconnaissance d'un modèle dans un texte.
+///***vérif adresse e-mail + RegExp.***///
 let valueEmail = document.getElementById("email");
 let alertEmail = document.getElementById("alert-email");
 form = document.querySelector("form");
@@ -152,7 +159,7 @@ form.addEventListener("input", () => {
   }
 });
 
-////vérif adresse + RegExp.
+///***vérif adresse + RegExp.***///
 let valueAddress = document.getElementById("address");
 let alertAddress = document.getElementById("alert-address");
 form = document.querySelector("form");
@@ -178,7 +185,7 @@ form.addEventListener("input", () => {
   }
 });
 
-////vérif ville + RegExp.
+///***vérif ville + RegExp.***///
 
 let valueCity = document.getElementById("city");
 let alertCity = document.getElementById("alert-city");
@@ -204,7 +211,7 @@ form.addEventListener("input", () => {
   }
 });
 
-///gestion du formulaire
+///-***** gestion du formulaire *****-///
 
 const postData = {
   contact: {},
@@ -217,6 +224,7 @@ for (productId of userBasketContent) {
 
 const formulaireData = JSON.parse(localStorage.getItem("formulaireData"));
 const formulaireId = localStorage.getItem("formulaireId");
+const totalPriceCde = JSON.parse(localStorage.getItem("totalPriceCde"));
 
 //On récupère les informations du formulaire
 form.addEventListener("submit", async (e) => {
@@ -230,7 +238,9 @@ form.addEventListener("submit", async (e) => {
     address: formulaire[3].value,
     city: formulaire[4].value,
   };
-
+  console.log("formulaire :");
+  console.log(formulaire);
+  console.log(postData.products);
   //Envoie des données avec la requête POST et récupérer un numéro ID
   fetch("http://localhost:3000/api/furniture/order", {
     method: "POST", // envoyer les données
@@ -248,18 +258,16 @@ form.addEventListener("submit", async (e) => {
       localStorage.setItem("formulaireId", data.orderId);
     });
 
-  //////récupérer les données pour les mettre dans le local storage/////
-  formulaireData.push(postData.contact);
-  localStorage.setItem("formulaireData", JSON.stringify(formulaireData));
-  console.log("Confirmation Cde : ");
-  console.log(formulaireData);
+  ///***récupérer les données pour les mettre dans le local storage***///
+  //Prénom
+  localStorage.setItem("formulaireData", JSON.stringify(postData.contact));
+  console.log("Confirmation Cde prenom + prix : ");
+  console.log(postData.contact.firstName);
+  //Prix Total
+  localStorage.setItem("totalPriceCde", JSON.stringify(totalPriceConfirmation));
+  console.log(totalPriceConfirmation);
 
-  // pour éviter le message d'erreur : "Uncaught (in promise) TypeError: Cannot read property 'push' of null"
-  if (formulaireData == null) {
-    formulaireData = [];
-  }
-
-  // Message confirmation commande
+  ///***Message confirmation commande***///
   const confirmationFormulaire = () => {
     if (
       window.confirm(`Votre commande a bien été enregistrée
@@ -271,14 +279,3 @@ Pour consulter la confirmation appuyer sur "OK"`)
 
   confirmationFormulaire();
 });
-
-//////récupérer les données pour les mettre dans le local storage/////
-// renvoie la valeur de la clé correspondante
-if (localStorage.getItem("formulaireData")) {
-  console.log("formulaire à remplir");
-} else {
-  console.log("création de la commande");
-  // mettre l'objet postData dans le local storage
-  let formulaireEmpty = [];
-  localStorage.setItem("formulaireData", JSON.stringify(formulaireEmpty));
-}

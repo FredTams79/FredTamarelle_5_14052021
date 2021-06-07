@@ -74,6 +74,22 @@ localStorage.setItem("key", JSON.stringify(contentBasket));
 //Supprimer un produit du panier :
 //"removeArticle".addEventListener("click", (event) => {this.btnSupprimer();})
 
+///***récupérer les données pour les mettre dans le local storage***///
+// renvoie la valeur de la clé correspondante
+/*if (localStorage.getItem("formulaireData")) {
+  console.log("formulaire à remplir");
+} else {
+  console.log("création de la commande");
+  // mettre l'objet postData dans le local storage
+  let formulaireEmpty = [];
+  localStorage.setItem("formulaireData", JSON.stringify(formulaireEmpty));
+}
+*/
+
+//const params = new URLSearchParams(document.location.search);
+//const firstNameCde = params.get("name");
+//const totalPriceCde = params.get("total");
+
 //----------Termes et Conditions-------------//
 /*
 let valueTermesConditions =
@@ -113,4 +129,38 @@ if ($("input[name=termes-conditions]").is(":checked")) {
     //alertTermesConditions.classList.add("d-none");
     document.getElementById("test").innerText = "YOU CLICKED ME!";
   }
+
+
+  //test termes et conditions
+const btnCde = document.getElementById("termes-conditions").checked;
+
+//On vérifie si la case termes et conditions est cochée
+function myCheckbox() {
+  if (btnCde == false) {
+    //alert("Veuillez cocher la case svp !");
+    document.getElementById("myCheckbox").classList.remove("d-none");
+    document.getElementById("myCheckbox").innerHTML =
+      "<p>Veuillez cocher la case svp !</p>";
+  } else {
+    document.getElementById("termes-conditions").onclick = function () {
+      myCheckbox();
+    };
+    document.getElementById("myCheckbox").style.opacity = 0;
+  }
+  console.log("case coché : " + btnCde);
+}
+*/
+
+///***case termes et conditions***///
+/*const btnCde = document.getElementById("termes-conditions").checked;
+
+//On vérifie si la case termes et conditions est cochée
+function myCheckbox() {
+  if (btnCde === false) {
+    alert("Veuillez accepter les termes et conditions svp !");
+  } else {
+    btnCde = true;
+  }
+}
+console.log("case coché : " + btnCde);
 */

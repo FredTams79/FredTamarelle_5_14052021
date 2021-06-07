@@ -1,22 +1,16 @@
-// texte confirmation commande + prénom + prix total + n° cde
-
-// renvoie la valeur de la clé correspondante
+////------ texte confirmation commande + prénom + prix total + n° cde -------/////
+///*** renvoie la valeur de la clé correspondante ***///
 const formulaireData = JSON.parse(localStorage.getItem("formulaireData"));
 console.log("Confirmation Cde : ");
-console.log(formulaireData);
+console.log(formulaireData.firstName);
 const formulaireId = localStorage.getItem("formulaireId");
 console.log("Confirmation Id : ");
 console.log(formulaireId);
-
-const params = new URLSearchParams(document.location.search);
-const firstNameCde = params.get("name");
-const totalPriceCde = params.get("total");
-
-console.log("texte Confirmation Cde : ");
-console.log(firstNameCde);
+const totalPriceCde = JSON.parse(localStorage.getItem("totalPriceCde"));
+console.log("Confirmation Total Prix Cde : ");
 console.log(totalPriceCde);
 
-if (formulaireId == null || firstNameCde == null) {
+if (formulaireId == null || formulaireData.firstName == null) {
   // Message d'erreur si commande non définie
   const erreurServeurCde = () => {
     if (
@@ -33,7 +27,7 @@ if (formulaireId == null || firstNameCde == null) {
   const textConfirmationCde = document.querySelector("#textConfirmationCde");
   textConfirmationCde.innerHTML = `<h3 class="border-0">
           Merci&nbsp;
-          <span class="font-weight-bold text-info">${firstNameCde}</span
+          <span class="font-weight-bold text-info">${formulaireData.firstName}</span
           >&nbsp;pour votre achat !&nbsp;
           <span class="badge badge-primary badge-pill ml-3"
             ><i class="fas fa-dolly-flatbed"></i
@@ -62,14 +56,12 @@ if (formulaireId == null || firstNameCde == null) {
           </button></a
         >`;
 
-  console.log("texte Confirmation Cde : ");
-  console.log(textConfirmationCde);
-
-  //Supprimer le Panier et le formulaire du local storage
+  ///*** Supprimer le Panier et le formulaire du local storage ***///
   function clearPanierId(c) {
     localStorage.removeItem(c);
   }
   clearPanierId("furniture");
   clearPanierId("formulaireData");
   clearPanierId("formulaireId");
+  clearPanierId("totalPriceCde");
 }

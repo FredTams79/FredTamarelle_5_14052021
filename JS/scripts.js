@@ -57,4 +57,7 @@ fetch("http://localhost:3000/api/furniture") //récupére la ressource à l'adre
       console.log(meuble);
     });
   })
-  .catch((error) => console.log("Erreur : " + error)); // Une erreur est survenue
+  .catch((error) => {
+    console.log("Erreur : " + error);
+    alert("HTTP 500 : erreur serveur"); // Une erreur est survenue
+  });
