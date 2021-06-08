@@ -251,22 +251,6 @@ form.addEventListener("submit", (e) => {
   localStorage.setItem("totalPriceCde", JSON.stringify(totalPriceConfirmation));
   console.log(totalPriceConfirmation);
 
-  //formulaireId = data.orderId;
-  //console.log("num Id : " + formulaireId);
-  //console.log("order Id 2 : " + data.orderId);
-
-  ///***Message confirmation commande***///
-  const confirmationFormulaire = () => {
-    if (
-      window.confirm(`Votre commande a bien été enregistrée.
-Pour consulter la confirmation appuyer sur "OK" svp !`)
-    ) {
-      window.location.href = `./confirmation.html?id=${formulaireId}&name=${postData.contact.firstName}&total=${totalPriceConfirmation}`;
-    }
-  };
-
-  confirmationFormulaire();
-
   ///***Envoie des données avec la requête POST et récupérer un numéro ID***///
   fetch("http://localhost:3000/api/furniture/order", {
     method: "POST", // envoyer les données
@@ -279,6 +263,8 @@ Pour consulter la confirmation appuyer sur "OK" svp !`)
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log("data : ");
+      console.log(data);
       //mettre l'ID dans le local storage
       localStorage.setItem("formulaireId", data.orderId);
 
@@ -286,4 +272,16 @@ Pour consulter la confirmation appuyer sur "OK" svp !`)
       console.log("formulaireId : ");
       console.log(formulaireId);
     });
+
+  confirmationFormulaire();
 });
+
+///***Message confirmation commande***///
+const confirmationFormulaire = () => {
+  if (
+    window.confirm(`Votre commande a bien été enregistrée.
+Pour consulter la confirmation appuyer sur "OK" svp !`)
+  ) {
+    window.location = `./confirmation.html`; //?id=${formulaireId}&name=${postData.contact.firstName}&total=${totalPriceConfirmation}`;
+  }
+};

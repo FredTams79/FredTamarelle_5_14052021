@@ -1,11 +1,11 @@
 ////------ texte confirmation commande + prénom + prix total + n° cde -------/////
 ///*** renvoie la valeur de la clé correspondante ***///
-const formulaireData = JSON.parse(localStorage.getItem("formulaireData"));
-console.log("Confirmation Cde : ");
-//console.log(formulaireData.firstName);
 const formulaireId = localStorage.getItem("formulaireId");
 console.log("Confirmation Id : ");
 console.log(formulaireId);
+const formulaireData = JSON.parse(localStorage.getItem("formulaireData"));
+console.log("Confirmation Cde : ");
+console.log(formulaireData);
 const totalPriceCde = JSON.parse(localStorage.getItem("totalPriceCde"));
 console.log("Confirmation Total Prix Cde : ");
 console.log(totalPriceCde);
@@ -56,7 +56,7 @@ if (formulaireId == null || formulaireData.firstName == null) {
           </button></a
         >`;
 
-  ///*** Supprimer le Panier et le formulaire du local storage ***///
+  ///*** Effacer le Panier et tout le local storage ***///
   function clearPanierId(c) {
     localStorage.removeItem(c);
   }
