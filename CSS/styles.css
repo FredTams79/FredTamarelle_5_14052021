@@ -5049,6 +5049,16 @@ input[type="button"].btn-block {
     transition: none;
   }
 }
+@media (max-width: 598px) {
+  .badge {
+    display: none;
+  }
+}
+@media (max-width: 798px) {
+  .livraison {
+    display: none;
+  }
+}
 a.badge:hover,
 a.badge:focus {
   text-decoration: none;
@@ -10625,6 +10635,11 @@ p {
 }
 .intro {
   position: relative;
+}
+@media (max-width: 598px) {
+  .intro {
+    display: none;
+  }
 }
 .intro-text {
   background-image: url("../SRC/oakWood2.jpg");
