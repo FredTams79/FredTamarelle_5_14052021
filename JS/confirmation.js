@@ -1,14 +1,11 @@
 ////------ texte confirmation commande + prénom + prix total + n° cde -------/////
 ///*** renvoie la valeur de la clé correspondante ***///
+//Id commande
 const formulaireId = localStorage.getItem("formulaireId");
-console.log("Confirmation Id : ");
-console.log(formulaireId);
+//prénom du client
 const formulaireData = JSON.parse(localStorage.getItem("formulaireData"));
-console.log("Confirmation Cde : ");
-console.log(formulaireData);
+//prix total commande
 const totalPriceCde = JSON.parse(localStorage.getItem("totalPriceCde"));
-console.log("Confirmation Total Prix Cde : ");
-console.log(totalPriceCde);
 
 if (formulaireId == null || formulaireData.firstName == null) {
   // Message d'erreur si commande non définie

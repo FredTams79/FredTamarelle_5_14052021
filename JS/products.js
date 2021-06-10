@@ -7,9 +7,7 @@ const product = params.get("id");
 let APIFurnitures = "http://localhost:3000/api/furniture/" + product;
 
 if (localStorage.getItem("furniture")) {
-  console.log("panier ok");
 } else {
-  console.log("création du panier");
   let basketEmpty = [];
   localStorage.setItem("furniture", JSON.stringify(basketEmpty));
 }
@@ -19,9 +17,6 @@ let basketContent = JSON.parse(localStorage.getItem("furniture"));
 fetch(APIFurnitures)
   .then((response) => response.json())
   .then((data) => {
-    console.log("data mais dans la promise fetch");
-    console.log(data);
-
     ///nom produit///
     document.querySelector("#nameProduct").innerHTML =
       "<strong>" + data.name + "</strong>";
@@ -38,21 +33,10 @@ fetch(APIFurnitures)
       const varnishId = document.createElement("option");
       varnishId.innerHTML = choix;
       varnishProduct.appendChild(varnishId);
-      console.log("options vernis");
-      console.log(choix);
     });
     ///prix produit///
     document.querySelector("#priceProduct").innerHTML =
       "<strong>Prix : " + data.price / 100 + " €</strong>";
-
-    ///test///
-    console.log("nom / image / prix du produit / vernis");
-    console.log(
-      data.name,
-      data.imageUrl,
-      data.price / 100,
-      varnishProduct.value
-    );
 
     ////****** AJOUTER AU PANIER + localStorage ******////
 
@@ -65,9 +49,6 @@ fetch(APIFurnitures)
 
         ///Récupération de la valeur du vernis choisi par l'utilisateur///
         let choixVarnish = varnishProduct.value;
-        console.log("choixVarnish : " + choixVarnish);
-        console.log("panier");
-        console.log(data, choixVarnish);
 
         ///Message confirmation ajout produit au panier///
         const confirmationBasket = () => {

@@ -8,23 +8,19 @@ let totalPriceConfirmation = document.getElementById("totalPrice").innerText;
 
 ///***si le panier est vide***///
 if (localStorage.getItem("furniture")) {
-  console.log("panier ok");
 } else {
-  console.log("création du panier");
   let basketEmpty = [];
   localStorage.setItem("furniture", JSON.stringify(basketEmpty));
 }
 
 const userBasketContent = JSON.parse(localStorage.getItem("furniture")); // convertir données JSON en objet JavaScript
-console.log("Panier :");
-console.log(userBasketContent);
 
 if (userBasketContent.length == 0) {
-  console.log("je suis vide");
+  /// message si panier vide ///
   basketNull.innerHTML = `
   <div class="h2 my-5 mx-5 py-3 text-center text-primary text-uppercase font-weight-bold"><div>Votre panier est vide</div></div>`;
 
-  ///***ne pas afficher le formulaire si panier vide***///
+  /// ne pas afficher le formulaire si panier vide ///
   document.getElementById("formulaire").style.opacity = 0;
 } else {
   userBasketContent.forEach((panier, index) => {
@@ -38,8 +34,6 @@ if (userBasketContent.length == 0) {
       <td scope="col" class="w-25">${panier.price / 100} €</td>
       <td><button id="btnSupprimer"><i class="fas fa-trash-alt"></i></button></td>`;
     basketProductContent.appendChild(productLine);
-
-    console.log(panier);
 
     ///***gestion du bouton supprimer***///
     document.getElementById("btnSupprimer").onclick = () => {
@@ -57,9 +51,6 @@ if (userBasketContent.length == 0) {
     for (p = 0; p < userBasketContent.length; p++) {
       priceAdditionnal.push(userBasketContent[p].price / 100);
     }
-    console.log(
-      "prix de tout les produits a additionner : " + priceAdditionnal
-    );
 
     ///additionner les prix avec la méthode .reduce///
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
@@ -69,12 +60,7 @@ if (userBasketContent.length == 0) {
     let affichageTotalPrice = document.querySelector("#totalPrice");
     affichageTotalPrice.innerText = totalPrice + " €";
 
-    console.log("prix total : " + affichageTotalPrice.innerText);
-    console.log("prix total afficher tableau panier = " + totalPrice + " €");
     totalPriceConfirmation = affichageTotalPrice.innerText;
-    console.log(
-      "total prix pour page confirmation : " + totalPriceConfirmation
-    );
 
     ///vider le panier une fois commande validée///
     localStorage.removeItem("userBasketContent");
@@ -186,7 +172,6 @@ form.addEventListener("input", () => {
 });
 
 ///***vérif ville + RegExp.***///
-
 let valueCity = document.getElementById("city");
 let alertCity = document.getElementById("alert-city");
 form = document.querySelector("form");
@@ -238,18 +223,13 @@ form.addEventListener("submit", (e) => {
     address: formulaire[3].value,
     city: formulaire[4].value,
   };
-  console.log("formulaire :");
-  console.log(formulaire);
-  console.log("id pdt : " + postData.products);
 
   ///***récupérer les données pour les mettre dans le local storage***///
   //Prénom
   localStorage.setItem("formulaireData", JSON.stringify(postData.contact));
-  console.log("Confirmation Cde prenom + prix : ");
-  console.log(postData.contact.firstName);
+
   //Prix Total
   localStorage.setItem("totalPriceCde", JSON.stringify(totalPriceConfirmation));
-  console.log(totalPriceConfirmation);
 
   ///***Envoie des données avec la requête POST et récupérer un numéro ID***///
   fetch("http://localhost:3000/api/furniture/order", {
@@ -263,14 +243,8 @@ form.addEventListener("submit", (e) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("data : ");
-      console.log(data);
       //mettre l'ID dans le local storage
       localStorage.setItem("formulaireId", data.orderId);
-
-      console.log("order Id : " + data.orderId);
-      console.log("formulaireId : ");
-      console.log(formulaireId);
     });
 
   confirmationFormulaire();

@@ -53,8 +53,6 @@ fetch("http://localhost:3000/api/furniture") //récupére la ressource à l'adre
       furnitureDetail.appendChild(furnitureDescription);
       furnitureDetail.appendChild(furniturePrice);
       furnitureDetail.appendChild(productLink);
-
-      console.log(meuble);
     });
   })
   .catch((error) => {
