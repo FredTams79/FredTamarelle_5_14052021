@@ -34,7 +34,7 @@ Clonez le dépôt du back-end [ici](https://github.com/OpenClassrooms-Student-Ce
 Description de l'application :
 Le site Orifurniture contient 4 pages.
 
-    - une page d'"acceuil" ou de vue sous forme de liste : montrant tous les articles disponibles à la vente ;
+    - une page d'"accueil" ou de vue sous forme de liste : montrant tous les articles disponibles à la vente ;
 
     - une page "produit" : qui affiche de manière dynamique l'élément sélectionné par l'utilisateur et lui permet de personnaliser le produit et de l'ajouter à son panier ;
 
